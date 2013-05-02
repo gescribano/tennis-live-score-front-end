@@ -1,0 +1,494 @@
+@import url(../../vendor/h5bp/css/normalize.css);
+@import url(../../vendor/h5bp/css/main.css);
+/*-- HTML5 Boilerplate. -----------------------------------------------------*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000312}}
+body {
+  font-family: Helvetica, Arial, Verdana;
+  padding-top: 30px;
+  background: #f0f1ed;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000318}}
+section {
+  width: 610px;
+  padding-left: 20px;
+  margin: 0 auto;
+  background: #fff;
+  padding-bottom: 20px;
+}
+
+/*-- Application stylesheets. -----------------------------------------------*/
+/*
+ * Variables
+ */
+/*
+ * Sprite generation 
+ */
+/*
+ * Re-used Icons
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000351}}
+.icon {
+  background: left center no-repeat;
+  padding-left: 17px;
+  margin-left: 6px;
+  font-size: 12px;
+  line-height: 1em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000357}}
+.icon.icon.on-serve {
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 -43px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000360}}
+.icon.icon.winner {
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 -276px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000363}}
+.icon.icon.shirt {
+  padding-left: 22px;
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000367}}
+.icon.icon.shoe {
+  padding-left: 22px;
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 -86px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000371}}
+.icon.icon.racket {
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 -129px;
+}
+
+/*
+ * Main Title
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000384}}
+h1 {
+  line-height: 1em;
+  font-size: 48px;
+  height: 66px;
+  line-height: 70px;
+  color: white;
+  background: url("../img/header_bg.png");
+  text-transform: uppercase;
+  margin: 0;
+  position: relative;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000394}}
+h1 span {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: -41px;
+  background: url("../img/header_left_bg.png");
+  height: 82px;
+  width: 41px;
+}
+
+/*
+ * Filters
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003109}}
+.filters {
+  margin-top: 22px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003111}}
+.filters .filter {
+  font-size: 13px;
+  line-height: 28px;
+  float: left;
+  width: 44%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003116}}
+.filters .filter.right {
+  float: right;
+  width: 53%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003120}}
+.filters .filter label {
+  font-weight: bold;
+  float: left;
+  margin-right: 8px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003125}}
+.filters .filter .selector {
+  float: left;
+  height: 28px;
+  border: 1px solid #dddede;
+  background: #f1f3f3 url("../img/filter_arrow_down.png") right center no-repeat;
+  padding-right: 10px;
+  background-origin: content-box;
+  position: relative;
+  cursor: pointer;
+  width: 160px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003135}}
+.filters .filter .selector span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-indent: 10px;
+  position: absolute;
+  cursor: pointer;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003143}}
+.filters .filter .selector select {
+  cursor: pointer;
+  height: 28px;
+  width: 160px;
+  vertical-align: top;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+
+/*
+ * Tournament
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003159}}
+.tournament h2 {
+  margin: 20px 0 0 0;
+  color: #353434;
+  font-size: 18px;
+  line-height: 75px;
+  height: 75px;
+  border-bottom: 1px solid #e1e1e1;
+  cursor: pointer;
+  background: #f2f1f1;
+  /* Old browsers */
+  position: relative;
+  padding-left: 60px;
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YyZjFmMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #f2f1f1 0%, white 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f1f1), color-stop(100%, white));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f2f1f1 0%, white 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f2f1f1 0%, white 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f2f1f1 0%, white 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f2f1f1 0%, #ffffff 100%);
+  /* W3C */
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f1f1', endColorstr='#ffffff',GradientType=0 ); /* IE6-8 */
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003179}}
+.tournament h2 .expand {
+  position: absolute;
+  top: 27px;
+  left: 15px;
+  width: 23px;
+  height: 20px;
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 -319px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003187}}
+.tournament h2 .toggle {
+  position: absolute;
+  top: 27px;
+  right: 10px;
+  display: block;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003192}}
+.tournament h2 .toggle a {
+  display: block;
+  float: left;
+  width: 25px;
+  height: 22px;
+  outline: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003198}}
+.tournament h2 .toggle a.list {
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 -450px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003201}}
+.tournament h2 .toggle a.boxes {
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 -398px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003207}}
+.tournament .legend {
+  background: #f7f7f7;
+  height: 40px;
+  padding-left: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003211}}
+.tournament .legend span {
+  font-size: 12px;
+  line-height: 40px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003214}}
+.tournament .legend span strong {
+  font-size: 16px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003218}}
+.tournament .legend .status-icons {
+  display: none;
+  float: right;
+  margin-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003222}}
+.tournament .legend .status-icons .status {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  vertical-align: text-bottom;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003228}}
+.tournament .legend .status-icons .status.in-progress {
+  background: #4acc4a;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003231}}
+.tournament .legend .status-icons .status.upcoming {
+  background: #e0ad10;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003234}}
+.tournament .legend .status-icons .status.finished {
+  background: #b80f0f;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003240}}
+.tournament .info {
+  line-height: 40px;
+  height: 40px;
+  padding-left: 10px;
+  color: #5d5d5d;
+  font-size: 13px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003246}}
+.tournament .info span {
+  margin-right: 44px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003251}}
+.tournament .matches .match {
+  margin-bottom: 15px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003253}}
+.tournament .matches .match .header {
+  background: #7db87d;
+  /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdkYjg3ZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM1ZWExNWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #7db87d 0%, #5ea15e 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7db87d), color-stop(100%, #5ea15e));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #7db87d 0%, #5ea15e 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #7db87d 0%, #5ea15e 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #7db87d 0%, #5ea15e 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #7db87d 0%, #5ea15e 100%);
+  /* W3C */
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db87d', endColorstr='#5ea15e',GradientType=0 ); /* IE6-8 */
+  height: 32px;
+  line-height: 34px;
+  color: white;
+  text-shadow: 1px 1px 1px #4d8d4d;
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 10px;
+  position: relative;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003273}}
+.tournament .matches .match .header .round .sep {
+  color: #72c372;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003277}}
+.tournament .matches .match .header a.head-to-head, .tournament .matches .match .header a.head-to-head:hover, .tournament .matches .match .header a.head-to-head:visited, .tournament .matches .match .header a.head-to-head:active {
+  color: white;
+  text-shadow: 1px 1px 1px #093440;
+  font-size: 12px;
+  line-height: 1em;
+  float: right;
+  text-decoration: none;
+  padding: 3px 8px 2px 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  margin-top: 7px;
+  background: #0d4959 url("../img/head_arrow_right.png") right center no-repeat;
+  margin-right: 160px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003289}}
+.tournament .matches .match .header a.head-to-head span.boxed, .tournament .matches .match .header a.head-to-head:hover span.boxed, .tournament .matches .match .header a.head-to-head:visited span.boxed, .tournament .matches .match .header a.head-to-head:active span.boxed {
+  display: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003293}}
+.tournament .matches .match .header .status {
+  display: block;
+  position: absolute;
+  height: 32px;
+  top: 0;
+  right: 0;
+  width: 140px;
+  padding-left: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003301}}
+.tournament .matches .match .header .status.in-progress {
+  background: #4acc4a;
+  text-shadow: 1px 1px 1px #337433;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003305}}
+.tournament .matches .match .header .status.upcoming {
+  background: #e0ad10;
+  text-shadow: 1px 1px 1px #b68e15;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003309}}
+.tournament .matches .match .header .status.finished {
+  background: #b80f0f;
+  text-shadow: 1px 1px 1px #840b0b;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003315}}
+.tournament .matches .match .players {
+  border: 1px solid #e3e1e1;
+  border-top: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003318}}
+.tournament .matches .match .players .player {
+  padding: 12px 15px 11px 32px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003320}}
+.tournament .matches .match .players .player:first-child {
+  background-color: #f7f7f7;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003323}}
+.tournament .matches .match .players .player.serving {
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 9px -28px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003326}}
+.tournament .matches .match .players .player.winner {
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 9px -261px;
+  background-color: #ecfeec;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003330}}
+.tournament .matches .match .players .player .name-icons {
+  float: left;
+  white-space: nowrap;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003333}}
+.tournament .matches .match .players .player .name-icons .name {
+  font-size: 13px;
+  line-height: 1em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003336}}
+.tournament .matches .match .players .player .name-icons .name a, .tournament .matches .match .players .player .name-icons .name a:link, .tournament .matches .match .players .player .name-icons .name a:visited, .tournament .matches .match .players .player .name-icons .name a:hover {
+  color: #007700;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003340}}
+.tournament .matches .match .players .player .name-icons .icons {
+  margin-left: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003342}}
+.tournament .matches .match .players .player .name-icons .icons .icon {
+  margin-left: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003347}}
+.tournament .matches .match .players .player .games {
+  float: right;
+  font-size: 12px;
+  line-height: 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003351}}
+.tournament .matches .match .players .player .games span {
+  margin-left: 10px;
+}
+
+/*
+ * Expanded alterations
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003363}}
+.tournament.expanded h2 .expand {
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 -357px;
+}
+
+/*
+ * Boxed view alterations
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003369}}
+.tournament.boxed h2 .toggle a.list {
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 -224px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003372}}
+.tournament.boxed h2 .toggle a.boxes {
+  background: url('/assets/img/icons-s8a500d9855.png') no-repeat;
+  background-position: 0 -172px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003375}}
+.tournament.boxed .legend .status-icons {
+  display: inline;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003378}}
+.tournament.boxed .matches .match {
+  float: left;
+  width: 49%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003383}}
+.tournament.boxed .matches .match:nth-child(2n+1) {
+  margin-right: 2%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003386}}
+.tournament.boxed .matches .match .header a.head-to-head {
+  margin-right: 30px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003389}}
+.tournament.boxed .matches .match .header a.head-to-head span.list {
+  display: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003392}}
+.tournament.boxed .matches .match .header a.head-to-head span.boxed {
+  display: inline;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003395}}
+.tournament.boxed .matches .match .header .status {
+  top: 9px;
+  right: 9px;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  text-indent: -1000px;
+  overflow: hidden;
+  -moz-box-shadow: inset 0px 0px 1px black;
+  -webkit-box-shadow: inset 0px 0px 1px black;
+  box-shadow: inset 0px 0px 1px black;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003407}}
+.tournament.boxed .matches .match .players .player .name-icons .name {
+  display: block;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003410}}
+.tournament.boxed .matches .match .players .player .name-icons .icons {
+  margin-left: 0;
+  display: block;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003414}}
+.tournament.boxed .matches .match .players .player .name-icons .icons .icon:first-child {
+  margin-left: 0;
+}
