@@ -1,26 +1,34 @@
 {
     "tournaments":[
         {
+            "id":"111",
+            "type":"ATP 250\nATP 250",
+            "location":"Marrakech",
+            "name":"Grand Prix SAR La Princesse Lalla Meryem",
+            "surface":"Clay",
+            "slug":"grand-prix-sar-la-princesse-lalla-meryem",
             "events":[
                 {
+                    "id":"1444557",
+                    "round":"Round of 16",
                     "duration":"01:32:12",
                     "status":"Finished",
                     "gender":"female",
                     "players":[
                         {
-                            "set_games":[
-                                "6",
-                                "4",
-                                "3"
-                            ],
+                            "id":"48766",
                             "is_winner":false,
                             "is_serving":false,
-                            "id":"48766",
                             "name":"Tsvetana Pironkova",
                             "country":"13",
                             "shirt":"http://www.tennis-warehouse.com/catpage-WALOTTO.html?from=tennis",
                             "racket":"http://www.tennis-warehouse.com/Babolat_Pure_Drive_Lite/descpageRCBAB-BPDL11.html?from=tennis",
-                            "shoes":"http://www.tennis-warehouse.com/catpage-WSLOTTO.html?from=tennis"
+                            "shoes":"http://www.tennis-warehouse.com/catpage-WSLOTTO.html?from=tennis",
+                            "set_games":[
+                                "6",
+                                "4",
+                                "3"
+                            ]
                         },
                         {
                             "set_games":[
@@ -37,9 +45,7 @@
                             "racket":"http://www.tennis-warehouse.com/Babolat_Pure_Drive_Lite/descpageRCBAB-BPDL11.html?from=tennis",
                             "shoes":"http://www.tennis-warehouse.com/catpage-WSLOTTO.html?from=tennis"
                         }
-                    ],
-                    "id":"1444557",
-                    "round":"Round of 16"
+                    ]
                 },
                 {
                     "duration":"01:12:12",
@@ -230,14 +236,15 @@
                     "id":"1444995",
                     "round":"Round of 16"
                 }
-            ],
-            "type":"ATP 250\nATP 250",
-            "location":"Marrakech",
-            "name":"Grand Prix SAR La Princesse Lalla Meryem",
-            "surface":"Clay",
-            "slug":"grand-prix-sar-la-princesse-lalla-meryem"
+            ]
         },
         {
+            "id":"222",
+            "type":"Grand Slam",
+            "location":"Stuttgart",
+            "name":"Porsche Tennis Grand Prix",
+            "surface":"Clay",
+            "slug":"porsche-tennis-grand-prix",
             "events":[
                 {
                     "duration":"01:32:12",
@@ -537,12 +544,7 @@
                     "id":"1445013",
                     "round":"Round of 16"
                 }
-            ],
-            "type":"Grand Slam",
-            "location":"Stuttgart",
-            "name":"Porsche Tennis Grand Prix",
-            "surface":"Clay",
-            "slug":"porsche-tennis-grand-prix"
+            ]
         }
     ],
     "last_updated":"Fri, 26 Apr 2013 00:13:34 +0100"

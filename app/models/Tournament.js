@@ -11,15 +11,17 @@ define([
 
     var Tournament = Backbone.Model.extend({
       
-      idAttribute: 'slug',
-      
       defaults: {
         type: '',
         location: '',
         name: '',
         surface: '',
         slug: '',
-        matches: new Matches()
+      },
+      
+      constructor: function() {
+        this.matches = new Matches();
+        Backbone.Model.apply( this, arguments );
       }
       
     });

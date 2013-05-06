@@ -1,11 +1,13 @@
 define([
   'app',
   // Library Dependencies
-  'jquery', 'lodash', 'backbone'
+  'jquery', 'lodash', 'backbone',
+  // Related Collections
+  'collections/Players'
   ],
 
   // Module Definition
-  function (app, $, _, Backbone){
+  function ( app, $, _, Backbone, Players ){
 
     var Match = Backbone.Model.extend({
 
@@ -14,7 +16,11 @@ define([
         duration: "",
         gender: "",
         round: ""
-        //players: New Players()
+      },
+
+      constructor: function() {
+        this.players = new Players();
+        Backbone.Model.apply( this, arguments );
       }
       
     });

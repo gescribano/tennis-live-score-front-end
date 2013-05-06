@@ -5,6 +5,7 @@
 
 /*-- Vendor styles -----------------------------------------------------*/
 @import "../vendor/chosen/chosen/chosen.css";
+@import "../vendor/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.css";
 
 /*-- Compass stuff -----------------------------------------------------*/
 @import "compass/css3";
@@ -13,9 +14,20 @@
 
 
 
+
+
+
+/*-- Main variables. -----------------------------------------------*/
+$in-progress-color: #4acc4a; 
+$upcoming-color: #e0ad10;
+$finished-color: #b80f0f;
+$font-family: Helvetica, Arial, Verdana;
+
+
 //dummy placeholder
 body {
-  font-family: Helvetica, Arial, Verdana;
+  font-family: $font-family;
+  font-size: 13px;
   padding-top: 30px; 
   background: #f0f1ed;
 }
@@ -30,11 +42,6 @@ section{
 
 
 
-/*-- Main variables. -----------------------------------------------*/
-$in-progress-color: #4acc4a; 
-$upcoming-color: #e0ad10;
-$finished-color: #b80f0f;
-
 
 /*-- Application stylesheets. -----------------------------------------------*/
 
@@ -43,7 +50,8 @@ $finished-color: #b80f0f;
  */
 $icons-sprites: sprite-map("icons/*.png", $spacing: 30px );
 @mixin icons-sprite( $name, $dimensions: false, $offset-x: 0, $offset-y: 0 ) {
-  background: $icons-sprites no-repeat;
+  background-image: $icons-sprites;
+  background-repeat: no-repeat;
   @include sprite($icons-sprites, $name, $dimensions, $offset-x, $offset-y)
 }
 
@@ -75,11 +83,9 @@ $icons-sprites: sprite-map("icons/*.png", $spacing: 30px );
   }
 }
 
-
 /*
  * Main Title
  */
-
 h1{
   line-height: 1em;
   font-size: 48px;
@@ -104,17 +110,16 @@ h1{
 /*
  * Filters
  */
-
 .filters{
   margin-top: 22px;
   .filter{
     font-size: 13px;
     line-height: 28px;
     float: left;
-    width: 44%;
+    width: 40%;
     &.right{
       float: right;
-      width: 53%;
+      width: 58%;
     }
     label{
       font-weight: bold;
@@ -125,11 +130,29 @@ h1{
       float: left;
       // height: 28px;
       // padding-right: 10px;
-      // border: 1px solid #dddede;
       // background: #f1f3f3 url('../img/filter_arrow_down.png') right center no-repeat;
       // background-origin: content-box;
       // position: relative;
       // cursor: pointer;
+      #date-picker{
+        border: 1px solid #dddede;
+        background: #f1f3f3;
+        height: 28px;
+        padding: 0 10px;
+        input{
+          border: none;
+          background: none;
+          width: 84px;
+          font-family: $font-family;
+          font-size: 13px;
+          line-height: 1em;
+        }
+        .ui-datepicker-trigger{
+          border: none;
+          cursor: pointer;
+          vertical-align: text-bottom;
+        }
+      }
       #tournament-select{
         width: 250px;
       }

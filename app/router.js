@@ -4,7 +4,7 @@ define([
   // Layout
   'views/layouts/MainLayout',
   // Views
-  'views/DateSelectorView', 'views/TournamentSelectorView', 'views/TournamentListView', 
+  'views/DateSelectorView', 'views/tournament/SelectorView', 'views/tournament/ListView', 
   // Collections
   'collections/Tournaments', 
   // Models
