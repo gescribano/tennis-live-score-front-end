@@ -1,0 +1,52 @@
+<div class="header clearfix">
+  <span class="round"><%= model.get('round') + '---' + model.cid %> <span class="sep">::</span> Court 2 <span class="sep">::</span> 2nd Match</span>
+  <a class="head-to-head" href="#"><span class="list">HEAD TO HEAD</span><span class="boxed">H2H</span></a>
+  <% 
+    switch( model.get('status') ){
+      case 'Not started': 
+        %><span class="status upcoming">UPCOMING</span><%
+        break;
+      case 'Postponed':
+        %><span class="status finished">POSTPONED</span><%
+        break;
+      case 'Finished':
+        %><span class="status finished">FINISHED (<%= model.get('duration') %>)</span><%
+        break;
+      case 'Started':
+        %><span class="status in-progress">IN PROGRESS</span><%
+        break;
+      case 'Cancelled':
+        %><span class="status finished">CANCELLED</span><%
+        break;
+      default:
+        %><span class="status finished">UNKNOWN</span><%
+    }
+    %>
+</div>
+<div class="players">
+  <div class="player clearfix serving">
+    <span class="name-icons">
+      <span class="name">Marin Cilic (9)</span>
+      <span class="icons">
+        <a class="icon shoe" href="#"></a>
+        <a class="icon racket" href="#"></a>
+      </span>
+    </span>
+    <span class="games">
+      <span>3</span>
+      <span>6</span>
+    </span>
+  </div>
+  <div class="player clearfix">
+    <span class="name-icons">
+      <span class="name"><a href="#">Kevin Anderson</a></span>
+      <span class="icons">
+        <a class="icon shirt" href="#"></a>
+      </span>
+    </span>
+    <span class="games">
+      <span>6</span>
+      <span>2</span>
+    </span>
+  </div>
+</div>

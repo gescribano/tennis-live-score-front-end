@@ -3,6 +3,10 @@
 @import "../../vendor/h5bp/css/normalize.css";
 @import "../../vendor/h5bp/css/main.css";
 
+/*-- Vendor styles -----------------------------------------------------*/
+@import "../vendor/chosen/chosen/chosen.css";
+
+/*-- Compass stuff -----------------------------------------------------*/
 @import "compass/css3";
 @import "compass/utilities/sprites/base";
 
@@ -25,16 +29,13 @@ section{
 
 
 
-
-
-/*-- Application stylesheets. -----------------------------------------------*/
-
-/*
- * Variables
- */
+/*-- Main variables. -----------------------------------------------*/
 $in-progress-color: #4acc4a; 
 $upcoming-color: #e0ad10;
 $finished-color: #b80f0f;
+
+
+/*-- Application stylesheets. -----------------------------------------------*/
 
 /*
  * Sprite generation 
@@ -73,9 +74,6 @@ $icons-sprites: sprite-map("icons/*.png", $spacing: 30px );
   }
 }
 
-
-.main{
-}
 
 /*
  * Main Title
@@ -124,28 +122,15 @@ h1{
     }
     .selector{
       float: left;
-      height: 28px;
-      border: 1px solid #dddede;
-      background: #f1f3f3 url('../img/filter_arrow_down.png') right center no-repeat;
-      padding-right: 10px;
-      background-origin: content-box;
-      position: relative;
-      cursor: pointer;
-      width: 160px;
-      span{
-        display: block;
-        height: 100%;
-        width: 100%;
-        text-indent: 10px;
-        position: absolute;
-        cursor: pointer;
-      }
-      select{
-        cursor: pointer;
-        height: 28px;
-        width: 160px;
-        vertical-align: top;
-        @include opacity(0);
+      // height: 28px;
+      // padding-right: 10px;
+      // border: 1px solid #dddede;
+      // background: #f1f3f3 url('../img/filter_arrow_down.png') right center no-repeat;
+      // background-origin: content-box;
+      // position: relative;
+      // cursor: pointer;
+      #tournament-select{
+        width: 250px;
       }
     }
   }

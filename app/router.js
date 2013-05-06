@@ -4,14 +4,14 @@ define([
   // Layout
   'views/layouts/MainLayout',
   // Views
-  'views/DateSelectorView', 'views/TournamentSelectorView', 
+  'views/DateSelectorView', 'views/TournamentSelectorView', 'views/TournamentListView', 
   // Collections
   'collections/Tournaments', 
   // Models
   'models/LiveScore'
 ],
 
-function( app, MainLayout, DateSelectorView, TournamentSelectorView, Tournaments, LiveScore ) {
+function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentListView, Tournaments, LiveScore ) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -27,7 +27,8 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, Tournaments
       // Use main layout and set Views.
       app.useLayout("main-layout").setViews({
         "#date-selector": new DateSelectorView(),
-        "#tournament-selector": new TournamentSelectorView( { tournaments: tournaments } )
+        "#tournament-selector": new TournamentSelectorView( { tournaments: tournaments } ),
+        "#tournament-list": new TournamentListView( { tournaments: tournaments } )
       }).render();
       
     },
@@ -54,7 +55,7 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, Tournaments
       // Set reload interval
       window.lsIntervalId = setInterval(function () {
           liveScore.fetch();
-      }, 1000*10); //TODO: decrease the time to 10/15 seconds
+      }, 1000*500000); //TODO: decrease the time to 10/15 seconds
       
       liveScore.fetch();
       

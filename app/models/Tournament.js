@@ -1,11 +1,13 @@
 define([
   'app',
   // Library Dependencies
-  'jquery', 'lodash', 'backbone'
+  'jquery', 'lodash', 'backbone',
+  // Related Collections
+  'collections/Matches'
   ],
 
   // Module Definition
-  function (app, $, _, Backbone){
+  function ( app, $, _, Backbone, Matches ){
 
     var Tournament = Backbone.Model.extend({
       
@@ -17,7 +19,7 @@ define([
         name: '',
         surface: '',
         slug: '',
-        //matches: New Matches()
+        matches: new Matches()
       }
       
     });

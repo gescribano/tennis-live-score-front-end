@@ -8,6 +8,8 @@ define([
     // The root path to run the application.
     root: "/" //TODO: change this to "/live-scores/" when integrating
   };
+  
+  window.app = app;
 
   // Localize or create a new JavaScript Template object.
   var JST = window.JST = window.JST || {};

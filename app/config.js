@@ -7,6 +7,8 @@ require.config({
 
   paths: {
     // Put paths here.
+    vendor: "../assets/vendor",
+    
   },
 
   shim: {

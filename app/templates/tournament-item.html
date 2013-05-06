@@ -1,0 +1,35 @@
+<div class="tournament expanded">
+  <h2>
+    <span><%= model.get('name') %> (Men’s Singles)</span>
+    <span class="expand"></span>
+    <span class="toggle clearfix">
+      <a href="#" class="list"></a>
+      <a href="#" class="boxes"></a>
+    </span>
+  </h2>
+  <div class="content">
+    
+    <div class="legend clearfix">
+      <span><strong>Legend:</strong></span>
+      <span class="icon on-serve">On Serve</span>
+      <span class="icon winner">Winner</span>
+      <span class="icon shirt">Shirts</span>
+      <span class="icon shoe">Shoes</span>
+      <span class="icon racket">Rackets</span>
+      <span class="status-icons">
+        <span class="status in-progress" title="In progress"></span>
+        <span class="status upcoming" title="Upcoming"></span>
+        <span class="status finished" title="Finished"></span>
+        <span>Match Status</span>
+      </span>
+    </div>
+    
+    <div class="info">
+      <span><strong>Location:</strong> <%= model.get('location') %>, Country</span>
+      <span><strong>Court Type:</strong> <%= model.get('surface') %></span>
+    </div>
+    
+    <div class="matches clearfix"></div>
+    
+  </div>
+</div>

@@ -1,7 +1,9 @@
-<label>Select Tournament</label>
+<label>Tournament</label>
 <div class="selector">
-  <span>All</span>
-  <select>
-    <% tournaments.each(function(tour) { %><option><%= tour.get("name") %></option><% }); %> 
+  <select id="tournament-select" data-placeholder="Choose a tournament..." >
+    <option></option>
+    <% tournaments.each(function(tour) { %>
+      <option value="<%= tour.get('slug') %>"><%= tour.get('name') %></option>
+    <% }); %> 
   </select>
 </div>
