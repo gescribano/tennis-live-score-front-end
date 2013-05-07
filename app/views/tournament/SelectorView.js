@@ -36,7 +36,7 @@ define([
       
       tournamentSelected: function(){
         var tournament = this.$el.find("select").val();
-        console.log( "Tournament selected: " + tournament );
+        //console.log( "Tournament selected: " + tournament );
       },
       
       afterRender: function() {

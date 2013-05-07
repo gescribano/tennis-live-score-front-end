@@ -31,7 +31,7 @@ define([
       
       dateSelected: function(){
         var date = this.$el.find("input").datepicker( "getDate" );
-        console.log( "Date selected: " + date );
+        //console.log( "Date selected: " + date );
       },
       
       cleanup: function() {
