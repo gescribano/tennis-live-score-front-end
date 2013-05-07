@@ -23,6 +23,7 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
       
       // Ensure the app has references to the collections.
       _.extend(app, { tournaments: tournaments });
+      // app.newViews = new Array();
       
       // Use main layout and set Views.
       app.useLayout("main-layout").setViews({

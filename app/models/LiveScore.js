@@ -34,13 +34,13 @@ define([
             
             var matchModel = tnmntModel.matches.get( respEvent.id );
             
-            console.log( matchModel );
-            console.log( respEvent.players );
+            //console.log( matchModel );
+            //console.log( respEvent.players );
             
             //console.log(respEvent.players);
             matchModel.players.set( respEvent.players );
             
-            return false;
+            // return false;
             
           });
             

@@ -1,4 +1,4 @@
-<div class="player clearfix serving">
+<div class="player clearfix <%- model.get('is_serving')?'serving':'' %> <%- model.get('is_winner')?'winner':'' %> ">
   <span class="name-icons">
     <span class="name"><%= model.get('name') %> (9)</span>
     <span class="icons">
@@ -7,7 +7,10 @@
     </span>
   </span>
   <span class="games">
-    <span>3</span>
-    <span>6</span>
+    <% _.each( model.get('set_games'), function( game ){
+      %>
+      <span><%= game %></span>
+      <%      
+    }) %>
   </span>
 </div>

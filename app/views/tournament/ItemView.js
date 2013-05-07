@@ -17,13 +17,18 @@ define([
       initialize: function( options ) {
         
         //TODO: check what happens when removing matches, listen to remove?
-        options.model.matches.on('add', function( model, collection, options ){
+        this.model.matches.on('add', function( model, collection, options ){
           
           this.insertView( ".matches", new MatchItemView({
             model: model
-          })).render();
+          })); // .render();
           
         }, this);
+        
+      },
+      
+      beforeRender: function() {
+        
         
       },
 

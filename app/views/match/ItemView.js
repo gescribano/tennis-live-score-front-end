@@ -21,14 +21,18 @@ define([
         //TODO: check what happens when removing matches, listen to remove?
         options.model.players.on('add', function( model, collection, options ){
           
-          console.log( "adding player view to match: "+ this.model.get("id") );
+          //console.log( "adding player view to match: "+ this.model.get("id") );
           
           this.insertView( ".players", new PlayerItemView({
             model: model
-          })).render();
+          })); //.render();
           
         }, this);
         
+      },
+      
+      afterRender: function() {
+        //console.log( this.views );
       },
 
       serialize: function() {

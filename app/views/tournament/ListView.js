@@ -17,11 +17,13 @@ define([
       initialize: function( options ) {
         
         //TODO: check what happens when removing tournaments, listen to remove?
-        options.tournaments.on('add', function( model, collection, options ){
+        this.options.tournaments.on('add', function( model, collection, options ){
           
-          this.insertView( new TournamentItemView({
+          var newView = this.insertView( new TournamentItemView({
             model: model
           })).render();
+          
+          // app.newViews.push( newView );
           
         }, this);
         

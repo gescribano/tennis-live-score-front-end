@@ -8,11 +8,11 @@ define([
   ],
 
   // Module Definition
-  function ( app, $, _, Backbone, Match ){
+  function ( app, $, _, Backbone, Player ){
 
     var Players = Backbone.Collection.extend({
         
-      model: Match
+      model: Player
       
     });
 

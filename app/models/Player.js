@@ -15,7 +15,8 @@ define([
         country: "",
         shirt: "",
         racket: "",
-        shoes: ""
+        shoes: "",
+        set_games: new Array()
       }
       
     });

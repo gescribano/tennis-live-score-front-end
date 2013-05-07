@@ -12,7 +12,7 @@ define([
       
       template: 'player-item',
       
-      //className: 'player-wrapper',
+      className: 'player-wrapper',
 
       serialize: function() {
         return { 

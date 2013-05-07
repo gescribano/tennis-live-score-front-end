@@ -6,13 +6,17 @@ require.config({
   deps: ["../vendor/jam/require.config", "main"],
 
   paths: {
-    // Put paths here.
+    
+    // Vendor path on assets
     vendor: "../assets/vendor",
     
   },
 
   shim: {
-    // Put shims here.
+
+    // jQuery Chosen depends on jQuery.
+    "vendor/chosen/chosen/chosen.jquery.min": ["jquery"]
+    
   }
 
 });

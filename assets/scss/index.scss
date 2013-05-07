@@ -324,43 +324,47 @@ h1{
       .players{
         border: 1px solid #e3e1e1;
         border-top: none;
-        .player{
-          padding: 12px 15px 11px 32px;
+        .player-wrapper{
           &:first-child{
-            background-color: #f7f7f7;
+            .player{
+              background-color: #f7f7f7;
+            }
           }
-          &.serving{
-            @include icons-sprite(ball, false, 9, 15);
-          }
-          &.winner{
-            @include icons-sprite(winner, false, 9, 15);
-            background-color: #ecfeec; 
-          }
-          .name-icons{
-            float: left;
-            white-space:nowrap;
-            .name{
-              font-size: 13px;
-              line-height: 1em;
-              a, a:link, a:visited, a:hover{
-                color: #007700;
-              }
-            }   
-            .icons{
-              margin-left: 5px;
-              .icon{
+          .player{
+            padding: 12px 15px 11px 32px;
+            &.serving{
+              @include icons-sprite(ball, false, 9, 15);
+            }
+            &.winner{
+              @include icons-sprite(winner, false, 9, 15);
+              background-color: #ecfeec; 
+            }
+            .name-icons{
+              float: left;
+              white-space:nowrap;
+              .name{
+                font-size: 13px;
+                line-height: 1em;
+                a, a:link, a:visited, a:hover{
+                  color: #007700;
+                }
+              }   
+              .icons{
                 margin-left: 5px;
-              }              
-            }   
+                .icon{
+                  margin-left: 5px;
+                }              
+              }   
+            }
+            .games{
+              float: right;
+              font-size: 12px;
+              line-height: 20px;
+              span{
+                margin-left: 10px;
+              }            
+            }          
           }
-          .games{
-            float: right;
-            font-size: 12px;
-            line-height: 20px;
-            span{
-              margin-left: 10px;
-            }            
-          }          
         }
       }
     }  
