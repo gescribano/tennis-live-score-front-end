@@ -13,7 +13,7 @@ define([
     var MainLayout = Backbone.Layout.extend({
       el: '#main', // TODO: Change this when integrating with live site
       template: 'main-layout'
-    })
+    });
 
     // Module Exports
     return MainLayout;

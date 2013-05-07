@@ -8,14 +8,15 @@ require.config({
   paths: {
     
     // Vendor path on assets
-    vendor: "../assets/vendor",
+    vendor: "../assets/vendor"
     
   },
 
   shim: {
 
-    // jQuery Chosen depends on jQuery.
-    "vendor/chosen/chosen/chosen.jquery.min": ["jquery"]
+    // Vendor plugins that depends on jQuery.
+    "vendor/chosen/chosen/chosen.jquery.min": ["jquery"],
+    "vendor/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom": ["jquery"]
     
   }
 

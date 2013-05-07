@@ -27,7 +27,7 @@ define([
       serialize: function() {
         return {
           tournaments: this.options.tournaments
-        }
+        };
       },
       
       events: {

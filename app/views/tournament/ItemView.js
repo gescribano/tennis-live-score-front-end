@@ -4,7 +4,7 @@ define([
   // Dependencies
   'jquery', 'backbone', 'lodash',
   // Sub-Views
-  'views/match/ItemView',
+  'views/match/ItemView'
   ],
 
   // Module Definition
@@ -29,7 +29,7 @@ define([
       
       events: {
         'click h2': 'expandCollapse',
-        'click .toggle a': 'toggleListView',
+        'click .toggle a': 'toggleListView'
       },      
       
       expandCollapse: function() {

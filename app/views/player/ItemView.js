@@ -2,7 +2,7 @@ define([
   // The App
   'app',
   // Dependencies
-  'jquery', 'backbone', 'lodash',
+  'jquery', 'backbone', 'lodash'
   ],
 
   // Module Definition

@@ -16,7 +16,7 @@ define([
         shirt: "",
         racket: "",
         shoes: "",
-        set_games: new Array()
+        set_games: []
       }
       
     });
