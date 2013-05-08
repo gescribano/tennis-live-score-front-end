@@ -16,6 +16,7 @@ define([
         shirt: "",
         racket: "",
         shoes: "",
+        url: "",
         set_games: []
       }
       

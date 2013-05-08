@@ -8,20 +8,19 @@ define([
   // Module Definition
   function ( app, $, Backbone, _ ) {
 
-    var PlayerItemView = Backbone.View.extend({
+    var MatchHeaderView = Backbone.View.extend({
       
-      template: 'player-item',
+      tagName: 'span',
       
-      className: 'player-wrapper',
-      
-      initialize: function( options ) {
-        
-        this.listenTo( this.model, 'change', this.render );
+      template: 'match-item-header',
 
-        //When the Player is removed from the collection
-        this.listenTo(this.model, 'removed', this.remove);
-        
-      },      
+      initialize: function( options ) {
+
+        this.model.on('change:status change:round', function( model, options ){
+          this.render();
+        }, this);
+
+      },
 
       serialize: function() {
         return { 
@@ -29,10 +28,6 @@ define([
         };
       },
       
-      afterRender: function() {
-        //console.log("PlayerItemView.afterRender");
-      },
-
       cleanup: function() {
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
@@ -42,7 +37,7 @@ define([
     });
 
     // Module Exports
-    return PlayerItemView;
+    return MatchHeaderView;
 
   }
 

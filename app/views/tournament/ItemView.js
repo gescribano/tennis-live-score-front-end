@@ -31,7 +31,12 @@ define([
           
         }, this);
         
+        this.model.matches.on('remove', function( model, collection, options ){
+          // The removal is handled on the Match ItemView
+          model.trigger("removed");
+        }, this);
         
+        //When the tournament is removed from the collection
         this.listenTo(this.model, 'removed', this.remove);
         
         //TODO: this.listenTo(this.model, 'visible', this.toggleVisible);

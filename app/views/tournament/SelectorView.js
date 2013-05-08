@@ -51,6 +51,7 @@ define([
       cleanup: function() {
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
+        //TODO: clean native event listeners?
       }
 
     });

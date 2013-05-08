@@ -25,10 +25,8 @@ define([
         }, this);
         
         this.options.tournaments.on('remove', function( model, collection, options ){
-          
           // The removal is handled on the Tournament ItemView
           model.trigger("removed");
-          
         }, this);
         
       },

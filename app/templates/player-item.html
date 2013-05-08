@@ -1,6 +1,13 @@
 <div class="player clearfix <%- model.get('is_serving')?'serving':'' %> <%- model.get('is_winner')?'winner':'' %> ">
   <span class="name-icons">
-    <span class="name"><%= model.get('name') %> (9)</span>
+    <span class="name">
+      <% if ( model.get('url') != '' ){ %>
+        <a href="<%- model.get('url') %>" data-bypass="1" target="_blank"><%= model.get('name') %></a>
+      <% } else { %>
+        <%= model.get('name') %> 
+      <% } %>
+      <span> (9)</span>
+    </span>
     <span class="icons">
       <% if ( model.get('shirt') != '' ){ %>
       <a class="icon shirt" href="<%- model.get('shirt') %>" data-bypass="1" target="_blank" ></a>

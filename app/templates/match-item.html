@@ -1,27 +1,3 @@
-<div class="header clearfix">
-  <span class="round"><%= model.get('round') %><!-- <span class="sep">::</span> Court Name <span class="sep">::</span> Match # --></span>
-  <a class="head-to-head" href="#"><span class="list">HEAD TO HEAD</span><span class="boxed">H2H</span></a>
-  <% 
-    switch( model.get('status') ){
-      case 'Not started': 
-        %><span class="status upcoming">UPCOMING</span><%
-        break;
-      case 'Postponed':
-        %><span class="status finished">POSTPONED</span><%
-        break;
-      case 'Finished':
-        %><span class="status finished">FINISHED (<%= model.get('duration') %>)</span><%
-        break;
-      case 'Started':
-        %><span class="status in-progress">IN PROGRESS</span><%
-        break;
-      case 'Cancelled':
-        %><span class="status finished">CANCELLED</span><%
-        break;
-      default:
-        %><span class="status finished">UNKNOWN</span><%
-    }
-    %>
-</div>
+<div class="header clearfix"></div>
 
 <div class="players"></div>

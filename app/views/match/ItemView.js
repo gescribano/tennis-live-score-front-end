@@ -4,11 +4,11 @@ define([
   // Dependencies
   'jquery', 'backbone', 'lodash',
   // Sub-Views
-  'views/player/ItemView'
+  'views/player/ItemView', 'views/match/HeaderView'
   ],
 
   // Module Definition
-  function ( app, $, Backbone, _, PlayerItemView ) {
+  function ( app, $, Backbone, _, PlayerItemView, MatchHeaderView ) {
 
     var MatchItemView = Backbone.View.extend({
       
@@ -18,7 +18,11 @@ define([
 
       initialize: function( options ) {
         
-        //TODO: check what happens when removing players, listen to remove? will players be removed?
+        // Child view for header update
+        this.setViews({
+          ".header": new MatchHeaderView({ model: this.model }),
+        });
+        
         options.model.players.on('add', function( model, collection, options ){
           
           this.insertView( ".players", new PlayerItemView({
@@ -26,6 +30,14 @@ define([
           })).render();
           
         }, this);
+        
+        options.model.players.on('remove', function( model, collection, options ){
+          // The removal is handled on the Player ItemView
+          model.trigger('removed');
+        }, this);
+        
+        //When the Match is removed from the collection
+        this.listenTo(this.model, 'removed', this.remove);
         
       },
       
@@ -43,6 +55,7 @@ define([
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
         this.options.model.players.off(null, null, this);
+        this.model.off(null, null, this);
       }
 
     });

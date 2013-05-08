@@ -14,8 +14,8 @@ define([
       defaults: {
         status: "",
         duration: "",
-        gender: "",
-        round: ""
+        round: "",
+        head_to_head_url: ""
       },
 
       constructor: function() {

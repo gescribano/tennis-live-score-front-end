@@ -17,16 +17,16 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
   var Router = Backbone.Router.extend({
     
     initialize: function() {
-      //TODO: parse JSON and fill data
       
       var tournaments = new Tournaments();
+      //var liveScore = new LiveScore();
       
       // Ensure the app has references to the collections.
       _.extend(app, { tournaments: tournaments });
-      
+
       // Use main layout and set Views.
       app.useLayout("main-layout").setViews({
-        "#date-selector": new DateSelectorView(),
+        "#date-selector": new DateSelectorView({}),
         "#tournament-selector": new TournamentSelectorView( { tournaments: tournaments } ),
         "#tournament-list": new TournamentListView( { tournaments: tournaments } )
       }).render();
