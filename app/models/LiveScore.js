@@ -11,6 +11,10 @@ define([
 
     var LiveScore = Backbone.Model.extend({
       
+      defaults: {
+        date: null
+      },
+      
       initialize: function( options ) {
 
         this.options = options;
@@ -32,6 +36,13 @@ define([
         
         this.fetch( this.fetchHandler );
         
+        // clearing the timeout if it already exists
+        window.clearTimeout( window.lsTimeoutId );
+        
+        // Set reload interval
+        window.lsTimeoutId = setTimeout( _.bind( this.fetchData, this ), 1000*500 ); 
+        //TODO: decrease the time to 10/15 seconds        
+        
       },
             
       url: function(){
@@ -39,11 +50,11 @@ define([
         var now = new Date();
         
         var date = $.datepicker.formatDate( "yy-mm-dd", now );
-        if ( this.options.date !== undefined ){
-          date = this.options.date;
+        if ( this.get('date') !== undefined ){
+          date = this.get('date');
         }
         
-        // TODO: change this when integrating
+        // TODO: change this path when integrating
         return "/app/"+date+"_livescore.json?v="+ now.getHours() + now.getMinutes() + now.getSeconds(); 
         
       }, 

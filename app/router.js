@@ -18,15 +18,16 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
     
     initialize: function() {
       
-      var tournaments = new Tournaments();
-      //var liveScore = new LiveScore();
+      var liveScore = new LiveScore();
+      this.liveScore = liveScore;
       
-      // Ensure the app has references to the collections.
+      var tournaments = new Tournaments();
+      // Ensure the app has references to the main Tournament collection
       _.extend(app, { tournaments: tournaments });
 
       // Use main layout and set Views.
       app.useLayout("main-layout").setViews({
-        "#date-selector": new DateSelectorView({}),
+        "#date-selector": new DateSelectorView({ model: liveScore }),
         "#tournament-selector": new TournamentSelectorView( { tournaments: tournaments } ),
         "#tournament-list": new TournamentListView( { tournaments: tournaments } )
       }).render();
@@ -45,33 +46,17 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
     
     index: function() {
       
-      this.fetchScores();
+      this.liveScore.clear();
+      this.liveScore.fetchData();
       
     },
 
     showByDate: function( date ) {
       
-      this.fetchScores( date );
+      this.liveScore.set("date", date );
+      this.liveScore.fetchData();
       
-    },
-    
-    fetchScores: function( date ) {
-      
-      var liveScore = new LiveScore({
-        date: date
-      });
-      
-      // clearing the interval if it already exists
-      window.clearInterval( window.lsIntervalId );
-      
-      // Set reload interval
-      window.lsIntervalId = setInterval(function () {
-          liveScore.fetchData();
-      }, 1000*500000); //TODO: decrease the time to 10/15 seconds
-      
-      liveScore.fetchData();
-      
-    }    
+    }
     
   });
 

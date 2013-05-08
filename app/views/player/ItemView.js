@@ -19,7 +19,7 @@ define([
         this.listenTo( this.model, 'change', this.render );
 
         //When the Player is removed from the collection
-        this.listenTo(this.model, 'removed', this.remove);
+        this.listenTo( this.model, 'removed', this.remove );
         
       },      
 
