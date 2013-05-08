@@ -57,17 +57,13 @@ define([
         _.each( response.tournaments, function( respTnmnt ){
           
           var tnmntModel = app.tournaments.get( respTnmnt.id );
-          //console.log( "A" );
-          //console.log( tnmntModel.matches );
           tnmntModel.matches.set( respTnmnt.events );
-          //console.log( tnmntModel.matches );
           
           // Now refresh players data for each Match
           _.each( respTnmnt.events, function( respEvent ){
             
             var matchModel = tnmntModel.matches.get( respEvent.id );
             matchModel.players.set( respEvent.players );
-            //console.log(respEvent.players);
             
           });
             

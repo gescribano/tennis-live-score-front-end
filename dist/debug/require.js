@@ -406,7 +406,7 @@ var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<div class="header clearfix">\n  <span class="round">'+
 ( model.get('round') )+
-' <span class="sep">::</span> Court 2 <span class="sep">::</span> 2nd Match</span>\n  <a class="head-to-head" href="#"><span class="list">HEAD TO HEAD</span><span class="boxed">H2H</span></a>\n  ';
+'<!-- <span class="sep">::</span> Court Name <span class="sep">::</span> Match # --></span>\n  <a class="head-to-head" href="#"><span class="list">HEAD TO HEAD</span><span class="boxed">H2H</span></a>\n  ';
  
     switch( model.get('status') ){
       case 'Not started': 
@@ -487,16 +487,32 @@ _.escape( model.get('shoes') )+
 return __p;
 };
 
+this["JST"]["app/templates/tournament-item-info.html"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<span><strong>Location:</strong> '+
+( model.get('location') )+
+', Country</span>\n<span><strong>Court Type:</strong> '+
+( model.get('surface') )+
+'</span>';
+}
+return __p;
+};
+
+this["JST"]["app/templates/tournament-item-title.html"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+=''+
+( model.get('name') )+
+' (Men’s Singles)';
+}
+return __p;
+};
+
 this["JST"]["app/templates/tournament-item.html"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="tournament expanded">\n  <h2>\n    <span class="title">'+
-( model.get('name') )+
-' (Men’s Singles)</span>\n    <span class="expand"></span>\n    <span class="toggle clearfix">\n      <a href="#" class="list"></a>\n      <a href="#" class="boxes"></a>\n    </span>\n  </h2>\n  <div class="content">\n    \n    <div class="legend clearfix">\n      <span><strong>Legend:</strong></span>\n      <span class="icon on-serve">On Serve</span>\n      <span class="icon winner">Winner</span>\n      <span class="icon shirt">Shirts</span>\n      <span class="icon shoe">Shoes</span>\n      <span class="icon racket">Rackets</span>\n      <span class="status-icons">\n        <span class="status in-progress" title="In progress"></span>\n        <span class="status upcoming" title="Upcoming"></span>\n        <span class="status finished" title="Finished"></span>\n        <span>Match Status</span>\n      </span>\n    </div>\n    \n    <div class="info">\n      <span><strong>Location:</strong> '+
-( model.get('location') )+
-', Country</span>\n      <span><strong>Court Type:</strong> '+
-( model.get('surface') )+
-'</span>\n    </div>\n    \n    <div class="matches clearfix"></div>\n    \n  </div>\n</div>';
+__p+='<div class="tournament expanded">\n  <h2>\n    <span class="title"></span>\n    <span class="expand"></span>\n    <span class="toggle clearfix">\n      <a href="#" class="list"></a>\n      <a href="#" class="boxes"></a>\n    </span>\n  </h2>\n  <div class="content">\n    \n    <div class="legend clearfix">\n      <span><strong>Legend:</strong></span>\n      <span class="icon on-serve">On Serve</span>\n      <span class="icon winner">Winner</span>\n      <span class="icon shirt">Shirts</span>\n      <span class="icon shoe">Shoes</span>\n      <span class="icon racket">Rackets</span>\n      <span class="status-icons">\n        <span class="status in-progress" title="In progress"></span>\n        <span class="status upcoming" title="Upcoming"></span>\n        <span class="status finished" title="Finished"></span>\n        <span>Match Status</span>\n      </span>\n    </div>\n    \n    <div class="info"></div>\n    \n    <div class="matches clearfix"></div>\n    \n  </div>\n</div>';
 }
 return __p;
 };
@@ -7226,17 +7242,31 @@ define('app',[
       path = path + ".html";
 
       // If cached, use the compiled template.
-      if (JST[path]) {
+      if ( JST[path] ) {
         return JST[path];
       }
 
+      /*
       // Put fetch into `async-mode`.
       var done = this.async();
-
       // Seek out the template asynchronously.
       $.get(app.root + path, function(contents) {
         done(JST[path] = _.template(contents));
       });
+      */
+     
+      //Changed to fetch layout syncronously
+      $.ajax({
+        type: 'GET',
+        async: false,
+        url: app.root + path,
+        success: function(data) {
+          JST[path] = _.template(data);
+        }
+      });
+      
+      return JST[path];     
+      
     }
   });
 
@@ -7285,7 +7315,7 @@ define('views/layouts/MainLayout',[
   ],
 
   // Module Definition
-  function (app, $, Backbone, _) {
+  function ( app, $, Backbone, _ ) {
 
     var MainLayout = Backbone.Layout.extend({
       el: '#main', // TODO: Change this when integrating with live site
@@ -9781,6 +9811,12 @@ define('views/player/ItemView',[
       template: 'player-item',
       
       className: 'player-wrapper',
+      
+      initialize: function( options ) {
+        
+        this.listenTo( this.model, 'change', this.render );
+        
+      },      
 
       serialize: function() {
         return { 
@@ -9825,7 +9861,7 @@ define('views/match/ItemView',[
 
       initialize: function( options ) {
         
-        //TODO: check what happens when removing players, listen to remove?
+        //TODO: check what happens when removing players, listen to remove? will players be removed?
         options.model.players.on('add', function( model, collection, options ){
           
           this.insertView( ".players", new PlayerItemView({
@@ -9860,17 +9896,105 @@ define('views/match/ItemView',[
   }
 
 );
+define('views/tournament/TitleView',[
+  // The App
+  'app',
+  // Dependencies
+  'jquery', 'backbone', 'lodash'
+  ],
+
+  // Module Definition
+  function ( app, $, Backbone, _ ) {
+
+    var TournamentTitleView = Backbone.View.extend({
+      
+      tagName: 'span',
+      
+      template: 'tournament-item-title',
+
+      initialize: function( options ) {
+
+        this.model.on('change:name', function( model, options ){
+          this.render();
+        }, this);
+
+      },
+
+      serialize: function() {
+        return { 
+          model: this.model
+        };
+      },
+      
+      cleanup: function() {
+        // This is called after this.remove() and should be used to
+        // cleanup event listeners, etc.
+        this.model.off(null, null, this);
+      }
+
+    });
+
+    // Module Exports
+    return TournamentTitleView;
+
+  }
+
+);
+define('views/tournament/InfoView',[
+  // The App
+  'app',
+  // Dependencies
+  'jquery', 'backbone', 'lodash'
+  ],
+
+  // Module Definition
+  function ( app, $, Backbone, _ ) {
+
+    var TournamentInfoView = Backbone.View.extend({
+      
+      tagName: 'span',
+      
+      template: 'tournament-item-info',
+
+      initialize: function( options ) {
+
+        this.model.on('change:location change:surface', function( model, options ){
+          this.render();
+        }, this);
+
+      },
+
+      serialize: function() {
+        return { 
+          model: this.model
+        };
+      },
+      
+      cleanup: function() {
+        // This is called after this.remove() and should be used to
+        // cleanup event listeners, etc.
+        this.model.off(null, null, this);
+      }
+
+    });
+
+    // Module Exports
+    return TournamentInfoView;
+
+  }
+
+);
 define('views/tournament/ItemView',[
   // The App
   'app',
   // Dependencies
   'jquery', 'backbone', 'lodash',
   // Sub-Views
-  'views/match/ItemView'
+  'views/match/ItemView', 'views/tournament/TitleView', 'views/tournament/InfoView'
   ],
 
   // Module Definition
-  function ( app, $, Backbone, _, MatchItemView ) {
+  function ( app, $, Backbone, _, MatchItemView, TournamentTitleView, TournamentInfoView ) {
 
     var TournamentItemView = Backbone.View.extend({
       
@@ -9878,7 +10002,13 @@ define('views/tournament/ItemView',[
 
       initialize: function( options ) {
         
-        //TODO: check what happens when removing matches, listen to remove?
+        // Child views related to tournament item title and info
+        this.setViews({
+          ".title": new TournamentTitleView({ model: this.model }),
+          ".info": new TournamentInfoView({ model: this.model })
+        });
+        
+        // When adding matches to the tournament collection, insert match views
         this.model.matches.on('add', function( model, collection, options ){
           
           this.insertView( ".matches", new MatchItemView({
@@ -9887,7 +10017,7 @@ define('views/tournament/ItemView',[
           
         }, this);
         
-        this.listenTo(this.model, 'change', this.render);
+        
         this.listenTo(this.model, 'removed', this.remove);
         
         //TODO: this.listenTo(this.model, 'visible', this.toggleVisible);
@@ -9984,9 +10114,9 @@ define('views/tournament/ListView',[
           
         }, this);
         
-        // The removal is handled on the ItemView
         this.options.tournaments.on('remove', function( model, collection, options ){
           
+          // The removal is handled on the Tournament ItemView
           model.trigger("removed");
           
         }, this);
@@ -10208,7 +10338,7 @@ define('models/LiveScore',[
           // Do nothing
         },
         error: function(model, resp) {
-          alert('Error fetching data');
+          alert('Error getting data');
         }
         
       },      
@@ -10248,14 +10378,7 @@ define('models/LiveScore',[
           _.each( respTnmnt.events, function( respEvent ){
             
             var matchModel = tnmntModel.matches.get( respEvent.id );
-            
-            //console.log( matchModel );
-            //console.log( respEvent.players );
-            
-            //console.log(respEvent.players);
             matchModel.players.set( respEvent.players );
-            
-            // return false;
             
           });
             

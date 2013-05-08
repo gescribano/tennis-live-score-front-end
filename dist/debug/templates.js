@@ -21,7 +21,7 @@ var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<div class="header clearfix">\n  <span class="round">'+
 ( model.get('round') )+
-' <span class="sep">::</span> Court 2 <span class="sep">::</span> 2nd Match</span>\n  <a class="head-to-head" href="#"><span class="list">HEAD TO HEAD</span><span class="boxed">H2H</span></a>\n  ';
+'<!-- <span class="sep">::</span> Court Name <span class="sep">::</span> Match # --></span>\n  <a class="head-to-head" href="#"><span class="list">HEAD TO HEAD</span><span class="boxed">H2H</span></a>\n  ';
  
     switch( model.get('status') ){
       case 'Not started': 
@@ -102,16 +102,32 @@ _.escape( model.get('shoes') )+
 return __p;
 };
 
+this["JST"]["app/templates/tournament-item-info.html"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<span><strong>Location:</strong> '+
+( model.get('location') )+
+', Country</span>\n<span><strong>Court Type:</strong> '+
+( model.get('surface') )+
+'</span>';
+}
+return __p;
+};
+
+this["JST"]["app/templates/tournament-item-title.html"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+=''+
+( model.get('name') )+
+' (Men’s Singles)';
+}
+return __p;
+};
+
 this["JST"]["app/templates/tournament-item.html"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="tournament expanded">\n  <h2>\n    <span class="title">'+
-( model.get('name') )+
-' (Men’s Singles)</span>\n    <span class="expand"></span>\n    <span class="toggle clearfix">\n      <a href="#" class="list"></a>\n      <a href="#" class="boxes"></a>\n    </span>\n  </h2>\n  <div class="content">\n    \n    <div class="legend clearfix">\n      <span><strong>Legend:</strong></span>\n      <span class="icon on-serve">On Serve</span>\n      <span class="icon winner">Winner</span>\n      <span class="icon shirt">Shirts</span>\n      <span class="icon shoe">Shoes</span>\n      <span class="icon racket">Rackets</span>\n      <span class="status-icons">\n        <span class="status in-progress" title="In progress"></span>\n        <span class="status upcoming" title="Upcoming"></span>\n        <span class="status finished" title="Finished"></span>\n        <span>Match Status</span>\n      </span>\n    </div>\n    \n    <div class="info">\n      <span><strong>Location:</strong> '+
-( model.get('location') )+
-', Country</span>\n      <span><strong>Court Type:</strong> '+
-( model.get('surface') )+
-'</span>\n    </div>\n    \n    <div class="matches clearfix"></div>\n    \n  </div>\n</div>';
+__p+='<div class="tournament expanded">\n  <h2>\n    <span class="title"></span>\n    <span class="expand"></span>\n    <span class="toggle clearfix">\n      <a href="#" class="list"></a>\n      <a href="#" class="boxes"></a>\n    </span>\n  </h2>\n  <div class="content">\n    \n    <div class="legend clearfix">\n      <span><strong>Legend:</strong></span>\n      <span class="icon on-serve">On Serve</span>\n      <span class="icon winner">Winner</span>\n      <span class="icon shirt">Shirts</span>\n      <span class="icon shoe">Shoes</span>\n      <span class="icon racket">Rackets</span>\n      <span class="status-icons">\n        <span class="status in-progress" title="In progress"></span>\n        <span class="status upcoming" title="Upcoming"></span>\n        <span class="status finished" title="Finished"></span>\n        <span>Match Status</span>\n      </span>\n    </div>\n    \n    <div class="info"></div>\n    \n    <div class="matches clearfix"></div>\n    \n  </div>\n</div>';
 }
 return __p;
 };

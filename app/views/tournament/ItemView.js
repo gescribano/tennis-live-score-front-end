@@ -4,11 +4,11 @@ define([
   // Dependencies
   'jquery', 'backbone', 'lodash',
   // Sub-Views
-  'views/match/ItemView'
+  'views/match/ItemView', 'views/tournament/TitleView', 'views/tournament/InfoView'
   ],
 
   // Module Definition
-  function ( app, $, Backbone, _, MatchItemView ) {
+  function ( app, $, Backbone, _, MatchItemView, TournamentTitleView, TournamentInfoView ) {
 
     var TournamentItemView = Backbone.View.extend({
       
@@ -16,6 +16,13 @@ define([
 
       initialize: function( options ) {
         
+        // Child views related to tournament item title and info
+        this.setViews({
+          ".title": new TournamentTitleView({ model: this.model }),
+          ".info": new TournamentInfoView({ model: this.model })
+        });
+        
+        // When adding matches to the tournament collection, insert match views
         this.model.matches.on('add', function( model, collection, options ){
           
           this.insertView( ".matches", new MatchItemView({
@@ -24,11 +31,6 @@ define([
           
         }, this);
         
-        // TODO: THIS WAS REMOVING CHILD VIEWS, HOW TO HANDLE THIS?
-        // this.model.on('change', function( model, options ){
-          // console.log( 'Tournament changed: ' + model.id );
-          // this.render();
-        // }, this);
         
         this.listenTo(this.model, 'removed', this.remove);
         
