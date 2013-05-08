@@ -1,7 +1,9 @@
 define([
   'app',
   // Library Dependencies
-  'jquery', 'lodash', 'backbone'
+  'jquery', 'lodash', 'backbone',
+  // Assets
+  'vendor/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom'
   ],
 
   // Module Definition
@@ -9,12 +11,40 @@ define([
 
     var LiveScore = Backbone.Model.extend({
       
+      initialize: function( options ) {
+
+        this.options = options;
+      
+      },
+      
+      fetchHandler: {
+        
+        success: function(model, resp) {
+          // Do nothing
+        },
+        error: function(model, resp) {
+          alert('Error getting data');
+        }
+        
+      },      
+      
+      fetchData: function(){
+        
+        this.fetch( this.fetchHandler );
+        
+      },
+            
       url: function(){
         
-        // TODO: change this when integrating
-        // TODO: get date parameter from picker somehow
         var now = new Date();
-        return "app/live_score_sample_json_a1.json?v="+ now.getHours() + now.getMinutes() + now.getSeconds(); 
+        
+        var date = $.datepicker.formatDate( "yy-mm-dd", now );
+        if ( this.options.date !== undefined ){
+          date = this.options.date;
+        }
+        
+        // TODO: change this when integrating
+        return "/app/"+date+"_livescore.json?v="+ now.getHours() + now.getMinutes() + now.getSeconds(); 
         
       }, 
       
@@ -27,20 +57,17 @@ define([
         _.each( response.tournaments, function( respTnmnt ){
           
           var tnmntModel = app.tournaments.get( respTnmnt.id );
+          //console.log( "A" );
+          //console.log( tnmntModel.matches );
           tnmntModel.matches.set( respTnmnt.events );
+          //console.log( tnmntModel.matches );
           
           // Now refresh players data for each Match
           _.each( respTnmnt.events, function( respEvent ){
             
             var matchModel = tnmntModel.matches.get( respEvent.id );
-            
-            //console.log( matchModel );
-            //console.log( respEvent.players );
-            
-            //console.log(respEvent.players);
             matchModel.players.set( respEvent.players );
-            
-            // return false;
+            //console.log(respEvent.players);
             
           });
             

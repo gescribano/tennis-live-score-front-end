@@ -16,14 +16,20 @@ define([
       
       initialize: function( options ) {
         
-        //TODO: check what happens when removing tournaments, listen to remove?
         this.options.tournaments.on('add', function( model, collection, options ){
           
-          var newView = this.insertView( new TournamentItemView({
+          this.insertView( new TournamentItemView({
             model: model
           })).render();
           
-          // app.newViews.push( newView );
+        }, this);
+        
+        // The removal is handled on the ItemView
+        this.options.tournaments.on('remove', function( model, collection, options ){
+          
+          //console.log('Tournament removed: ' + model.id);
+          
+          model.trigger("removed");
           
         }, this);
         

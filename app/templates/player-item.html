@@ -3,13 +3,13 @@
     <span class="name"><%= model.get('name') %> (9)</span>
     <span class="icons">
       <% if ( model.get('shirt') != '' ){ %>
-      <a class="icon shirt" href="<%- model.get('shirt') %>" target="_blank" ></a>
+      <a class="icon shirt" href="<%- model.get('shirt') %>" data-bypass="1" target="_blank" ></a>
       <% } %>
       <% if ( model.get('racket') != '' ){ %>
-      <a class="icon racket" href="<%- model.get('racket') %>" target="_blank"></a>
+      <a class="icon racket" href="<%- model.get('racket') %>" data-bypass="1" target="_blank"></a>
       <% } %>
       <% if ( model.get('shoes') != '' ){ %>
-      <a class="icon shoe" href="<%- model.get('shoes') %>" target="_blank"></a>
+      <a class="icon shoe" href="<%- model.get('shoes') %>" data-bypass="1" target="_blank"></a>
       <% } %>
     </span>
   </span>

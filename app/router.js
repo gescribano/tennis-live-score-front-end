@@ -23,7 +23,6 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
       
       // Ensure the app has references to the collections.
       _.extend(app, { tournaments: tournaments });
-      // app.newViews = new Array();
       
       // Use main layout and set Views.
       app.useLayout("main-layout").setViews({
@@ -33,21 +32,33 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
       }).render();
       
     },
+
+    // Shortcut for building a url.
+    go: function() {
+      return this.navigate(_.toArray(arguments).join("/"), true);
+    },
     
     routes: {
-      "": "index"
+      "": "index",
+      "date/:date": "showByDate"
     },
     
     index: function() {
       
-      this.fetch();
+      this.fetchScores();
+      
+    },
+
+    showByDate: function( date ) {
+      
+      this.fetchScores( date );
       
     },
     
-    fetch: function() {
+    fetchScores: function( date ) {
       
       var liveScore = new LiveScore({
-        //TODO: pass args here depending on route / filters
+        date: date
       });
       
       // clearing the interval if it already exists
@@ -55,10 +66,10 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
       
       // Set reload interval
       window.lsIntervalId = setInterval(function () {
-          liveScore.fetch();
+          liveScore.fetchData();
       }, 1000*500000); //TODO: decrease the time to 10/15 seconds
       
-      liveScore.fetch();
+      liveScore.fetchData();
       
     }    
     

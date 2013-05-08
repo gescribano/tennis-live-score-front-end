@@ -460,19 +460,19 @@ _.escape( model.get('is_winner')?'winner':'' )+
  if ( model.get('shirt') != '' ){ 
 ;__p+='\n      <a class="icon shirt" href="'+
 _.escape( model.get('shirt') )+
-'" target="_blank" ></a>\n      ';
+'" data-bypass="1" target="_blank" ></a>\n      ';
  } 
 ;__p+='\n      ';
  if ( model.get('racket') != '' ){ 
 ;__p+='\n      <a class="icon racket" href="'+
 _.escape( model.get('racket') )+
-'" target="_blank"></a>\n      ';
+'" data-bypass="1" target="_blank"></a>\n      ';
  } 
 ;__p+='\n      ';
  if ( model.get('shoes') != '' ){ 
 ;__p+='\n      <a class="icon shoe" href="'+
 _.escape( model.get('shoes') )+
-'" target="_blank"></a>\n      ';
+'" data-bypass="1" target="_blank"></a>\n      ';
  } 
 ;__p+='\n    </span>\n  </span>\n  <span class="games">\n    ';
  _.each( model.get('set_games'), function( game ){
@@ -490,7 +490,7 @@ return __p;
 this["JST"]["app/templates/tournament-item.html"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="tournament expanded">\n  <h2>\n    <span>'+
+__p+='<div class="tournament expanded">\n  <h2>\n    <span class="title">'+
 ( model.get('name') )+
 ' (Men’s Singles)</span>\n    <span class="expand"></span>\n    <span class="toggle clearfix">\n      <a href="#" class="list"></a>\n      <a href="#" class="boxes"></a>\n    </span>\n  </h2>\n  <div class="content">\n    \n    <div class="legend clearfix">\n      <span><strong>Legend:</strong></span>\n      <span class="icon on-serve">On Serve</span>\n      <span class="icon winner">Winner</span>\n      <span class="icon shirt">Shirts</span>\n      <span class="icon shoe">Shoes</span>\n      <span class="icon racket">Rackets</span>\n      <span class="status-icons">\n        <span class="status in-progress" title="In progress"></span>\n        <span class="status upcoming" title="Upcoming"></span>\n        <span class="status finished" title="Finished"></span>\n        <span>Match Status</span>\n      </span>\n    </div>\n    \n    <div class="info">\n      <span><strong>Location:</strong> '+
 ( model.get('location') )+
@@ -9674,7 +9674,8 @@ define('views/DateSelectorView',[
       
       dateSelected: function(){
         var date = this.$el.find("input").datepicker( "getDate" );
-        //console.log( "Date selected: " + date );
+        // Route to the new date
+        app.router.go( 'date' , $.datepicker.formatDate( "yy-mm-dd", date ) );
       },
       
       cleanup: function() {
@@ -9720,7 +9721,8 @@ define('views/tournament/SelectorView',[
       
       initialize: function( options ) {
         
-        options.tournaments.on('reset', function(){
+        //TODO: this would be being fired many times, b/c I use SET to refresh the tournaments collection
+        options.tournaments.on('add remove', function(){
           
           this.render();
           
@@ -9823,14 +9825,12 @@ define('views/match/ItemView',[
 
       initialize: function( options ) {
         
-        //TODO: check what happens when removing matches, listen to remove?
+        //TODO: check what happens when removing players, listen to remove?
         options.model.players.on('add', function( model, collection, options ){
-          
-          //console.log( "adding player view to match: "+ this.model.get("id") );
           
           this.insertView( ".players", new PlayerItemView({
             model: model
-          })); //.render();
+          })).render();
           
         }, this);
         
@@ -9883,9 +9883,14 @@ define('views/tournament/ItemView',[
           
           this.insertView( ".matches", new MatchItemView({
             model: model
-          })); // .render();
+          })).render();
           
         }, this);
+        
+        this.listenTo(this.model, 'change', this.render);
+        this.listenTo(this.model, 'removed', this.remove);
+        
+        //TODO: this.listenTo(this.model, 'visible', this.toggleVisible);
         
       },
       
@@ -9939,7 +9944,8 @@ define('views/tournament/ItemView',[
       cleanup: function() {
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
-        this.options.model.matches.off(null, null, this);
+        this.model.matches.off(null, null, this);
+        this.model.off(null, null, this);
         
         //TODO: do I need to call undelegateEvents for native view events ?
       }
@@ -9970,14 +9976,18 @@ define('views/tournament/ListView',[
       
       initialize: function( options ) {
         
-        //TODO: check what happens when removing tournaments, listen to remove?
         this.options.tournaments.on('add', function( model, collection, options ){
           
-          var newView = this.insertView( new TournamentItemView({
+          this.insertView( new TournamentItemView({
             model: model
           })).render();
           
-          // app.newViews.push( newView );
+        }, this);
+        
+        // The removal is handled on the ItemView
+        this.options.tournaments.on('remove', function( model, collection, options ){
+          
+          model.trigger("removed");
           
         }, this);
         
@@ -10176,7 +10186,9 @@ define('collections/Tournaments',[
 define('models/LiveScore',[
   'app',
   // Library Dependencies
-  'jquery', 'lodash', 'backbone'
+  'jquery', 'lodash', 'backbone',
+  // Assets
+  'vendor/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom'
   ],
 
   // Module Definition
@@ -10184,12 +10196,40 @@ define('models/LiveScore',[
 
     var LiveScore = Backbone.Model.extend({
       
+      initialize: function( options ) {
+
+        this.options = options;
+      
+      },
+      
+      fetchHandler: {
+        
+        success: function(model, resp) {
+          // Do nothing
+        },
+        error: function(model, resp) {
+          alert('Error fetching data');
+        }
+        
+      },      
+      
+      fetchData: function(){
+        
+        this.fetch( this.fetchHandler );
+        
+      },
+            
       url: function(){
         
-        // TODO: change this when integrating
-        // TODO: get date parameter from picker somehow
         var now = new Date();
-        return "app/live_score_sample_json_a1.json?v="+ now.getHours() + now.getMinutes() + now.getSeconds(); 
+        
+        var date = $.datepicker.formatDate( "yy-mm-dd", now );
+        if ( this.options.date !== undefined ){
+          date = this.options.date;
+        }
+        
+        // TODO: change this when integrating
+        return "/app/"+date+"_livescore.json?v="+ now.getHours() + now.getMinutes() + now.getSeconds(); 
         
       }, 
       
@@ -10256,7 +10296,6 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
       
       // Ensure the app has references to the collections.
       _.extend(app, { tournaments: tournaments });
-      // app.newViews = new Array();
       
       // Use main layout and set Views.
       app.useLayout("main-layout").setViews({
@@ -10266,21 +10305,33 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
       }).render();
       
     },
+
+    // Shortcut for building a url.
+    go: function() {
+      return this.navigate(_.toArray(arguments).join("/"), true);
+    },
     
     routes: {
-      "": "index"
+      "": "index",
+      "date/:date": "showByDate"
     },
     
     index: function() {
       
-      this.fetch();
+      this.fetchScores();
+      
+    },
+
+    showByDate: function( date ) {
+      
+      this.fetchScores( date );
       
     },
     
-    fetch: function() {
+    fetchScores: function( date ) {
       
       var liveScore = new LiveScore({
-        //TODO: pass args here depending on route / filters
+        date: date
       });
       
       // clearing the interval if it already exists
@@ -10288,10 +10339,10 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
       
       // Set reload interval
       window.lsIntervalId = setInterval(function () {
-          liveScore.fetch();
+          liveScore.fetchData();
       }, 1000*500000); //TODO: decrease the time to 10/15 seconds
       
-      liveScore.fetch();
+      liveScore.fetchData();
       
     }    
     

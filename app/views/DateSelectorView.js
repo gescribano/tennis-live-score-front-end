@@ -31,7 +31,8 @@ define([
       
       dateSelected: function(){
         var date = this.$el.find("input").datepicker( "getDate" );
-        //console.log( "Date selected: " + date );
+        // Route to the new date
+        app.router.go( 'date' , $.datepicker.formatDate( "yy-mm-dd", date ) );
       },
       
       cleanup: function() {

@@ -75,19 +75,19 @@ _.escape( model.get('is_winner')?'winner':'' )+
  if ( model.get('shirt') != '' ){ 
 ;__p+='\n      <a class="icon shirt" href="'+
 _.escape( model.get('shirt') )+
-'" target="_blank" ></a>\n      ';
+'" data-bypass="1" target="_blank" ></a>\n      ';
  } 
 ;__p+='\n      ';
  if ( model.get('racket') != '' ){ 
 ;__p+='\n      <a class="icon racket" href="'+
 _.escape( model.get('racket') )+
-'" target="_blank"></a>\n      ';
+'" data-bypass="1" target="_blank"></a>\n      ';
  } 
 ;__p+='\n      ';
  if ( model.get('shoes') != '' ){ 
 ;__p+='\n      <a class="icon shoe" href="'+
 _.escape( model.get('shoes') )+
-'" target="_blank"></a>\n      ';
+'" data-bypass="1" target="_blank"></a>\n      ';
  } 
 ;__p+='\n    </span>\n  </span>\n  <span class="games">\n    ';
  _.each( model.get('set_games'), function( game ){
@@ -105,7 +105,7 @@ return __p;
 this["JST"]["app/templates/tournament-item.html"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="tournament expanded">\n  <h2>\n    <span>'+
+__p+='<div class="tournament expanded">\n  <h2>\n    <span class="title">'+
 ( model.get('name') )+
 ' (Men’s Singles)</span>\n    <span class="expand"></span>\n    <span class="toggle clearfix">\n      <a href="#" class="list"></a>\n      <a href="#" class="boxes"></a>\n    </span>\n  </h2>\n  <div class="content">\n    \n    <div class="legend clearfix">\n      <span><strong>Legend:</strong></span>\n      <span class="icon on-serve">On Serve</span>\n      <span class="icon winner">Winner</span>\n      <span class="icon shirt">Shirts</span>\n      <span class="icon shoe">Shoes</span>\n      <span class="icon racket">Rackets</span>\n      <span class="status-icons">\n        <span class="status in-progress" title="In progress"></span>\n        <span class="status upcoming" title="Upcoming"></span>\n        <span class="status finished" title="Finished"></span>\n        <span>Match Status</span>\n      </span>\n    </div>\n    \n    <div class="info">\n      <span><strong>Location:</strong> '+
 ( model.get('location') )+

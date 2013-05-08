@@ -13,6 +13,12 @@ define([
       template: 'player-item',
       
       className: 'player-wrapper',
+      
+      initialize: function( options ) {
+        
+        this.listenTo( this.model, 'change', this.render );
+        
+      },      
 
       serialize: function() {
         return { 

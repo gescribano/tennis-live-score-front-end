@@ -18,14 +18,12 @@ define([
 
       initialize: function( options ) {
         
-        //TODO: check what happens when removing matches, listen to remove?
+        //TODO: check what happens when removing players, listen to remove? will players be removed?
         options.model.players.on('add', function( model, collection, options ){
-          
-          //console.log( "adding player view to match: "+ this.model.get("id") );
           
           this.insertView( ".players", new PlayerItemView({
             model: model
-          })); //.render();
+          })).render();
           
         }, this);
         

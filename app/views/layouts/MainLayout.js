@@ -8,7 +8,7 @@ define([
   ],
 
   // Module Definition
-  function (app, $, Backbone, _) {
+  function ( app, $, Backbone, _ ) {
 
     var MainLayout = Backbone.Layout.extend({
       el: '#main', // TODO: Change this when integrating with live site

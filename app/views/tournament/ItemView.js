@@ -16,14 +16,23 @@ define([
 
       initialize: function( options ) {
         
-        //TODO: check what happens when removing matches, listen to remove?
         this.model.matches.on('add', function( model, collection, options ){
           
           this.insertView( ".matches", new MatchItemView({
             model: model
-          })); // .render();
+          })).render();
           
         }, this);
+        
+        // TODO: THIS WAS REMOVING CHILD VIEWS, HOW TO HANDLE THIS?
+        // this.model.on('change', function( model, options ){
+          // console.log( 'Tournament changed: ' + model.id );
+          // this.render();
+        // }, this);
+        
+        this.listenTo(this.model, 'removed', this.remove);
+        
+        //TODO: this.listenTo(this.model, 'visible', this.toggleVisible);
         
       },
       
@@ -77,7 +86,8 @@ define([
       cleanup: function() {
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
-        this.options.model.matches.off(null, null, this);
+        this.model.matches.off(null, null, this);
+        this.model.off(null, null, this);
         
         //TODO: do I need to call undelegateEvents for native view events ?
       }

@@ -26,17 +26,31 @@ define([
       path = path + ".html";
 
       // If cached, use the compiled template.
-      if (JST[path]) {
+      if ( JST[path] ) {
         return JST[path];
       }
 
+      /*
       // Put fetch into `async-mode`.
       var done = this.async();
-
       // Seek out the template asynchronously.
       $.get(app.root + path, function(contents) {
         done(JST[path] = _.template(contents));
       });
+      */
+     
+      //Changed to fetch layout syncronously
+      $.ajax({
+        type: 'GET',
+        async: false,
+        url: app.root + path,
+        success: function(data) {
+          JST[path] = _.template(data);
+        }
+      });
+      
+      return JST[path];     
+      
     }
   });
 

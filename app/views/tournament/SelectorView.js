@@ -16,7 +16,8 @@ define([
       
       initialize: function( options ) {
         
-        options.tournaments.on('reset', function(){
+        //TODO: this would be being fired many times, b/c I use SET to refresh the tournaments collection
+        options.tournaments.on('add remove', function(){
           
           this.render();
           
