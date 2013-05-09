@@ -46,7 +46,7 @@ section{
 /*-- Application stylesheets. -----------------------------------------------*/
 
 /*
- * Sprite generation 
+ * Icons sprite generation 
  */
 $icons-sprites: sprite-map("icons/*.png", $spacing: 30px );
 @mixin icons-sprite( $name, $dimensions: false, $offset-x: 0, $offset-y: 0 ) {
@@ -54,6 +54,12 @@ $icons-sprites: sprite-map("icons/*.png", $spacing: 30px );
   background-repeat: no-repeat;
   @include sprite($icons-sprites, $name, $dimensions, $offset-x, $offset-y)
 }
+
+/*
+ * Flags sprite generation 
+ */
+@import "flags/*.png";
+@include all-flags-sprites;
 
 /*
  * Re-used Icons
@@ -354,6 +360,13 @@ h1{
                 a, a:link, a:visited, a:hover{
                   color: #007700;
                 }
+                .flag{
+                  display: block;
+                  width: 20px;
+                  height: 15px;
+                  margin-right: 5px;
+                  float: left;
+                }
               }   
               .icons{
                 margin-left: 5px;
@@ -425,6 +438,9 @@ h1{
 }
 .tournament.boxed .matches .match .players .player .name-icons .name{
   display: block;
+}
+.tournament.boxed .matches .match .players .player .name-icons .name .flag{
+  display: none;
 }
 .tournament.boxed .matches .match .players .player .name-icons .icons{
   margin-left: 0;

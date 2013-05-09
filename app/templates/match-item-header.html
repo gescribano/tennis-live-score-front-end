@@ -1,5 +1,5 @@
 <span class="round"><%= model.get('round') %><!-- <span class="sep">::</span> Court Name <span class="sep">::</span> Match # --></span>
-<a class="head-to-head" href="#"><span class="list">HEAD TO HEAD</span><span class="boxed">H2H</span></a>
+<a class="head-to-head" href="<%= model.get('head_to_head_url') %>"><span class="list">HEAD TO HEAD</span><span class="boxed">H2H</span></a>
 <% 
 switch( model.get('status') ){
   case 'Not started': 

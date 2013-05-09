@@ -1,6 +1,9 @@
 <div class="player clearfix <%- model.get('is_serving')?'serving':'' %> <%- model.get('is_winner')?'winner':'' %> ">
   <span class="name-icons">
     <span class="name">
+      <% if ( model.get('country') != '' ){ %>
+        <span class="flag flags-<%- model.get('country').toLowerCase() %>"></span>
+      <% } %>
       <% if ( model.get('url') != '' ){ %>
         <a href="<%- model.get('url') %>" data-bypass="1" target="_blank"><%= model.get('name') %></a>
       <% } else { %>
