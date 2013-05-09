@@ -3,7 +3,7 @@
   <select id="tournament-select" data-placeholder="Choose a tournament..." >
     <option></option>
     <% tournaments.each(function(tour) { %>
-      <option value="<%= tour.get('slug') %>"><%= tour.get('name') %></option>
+      <option value="<%= tour.get('slug') %>" <%=  ( model.get("tournamentSlug") == tour.get('slug') )?'selected="selected"':''  %> ><%= tour.get('name') %></option>
     <% }); %> 
   </select>
 </div>

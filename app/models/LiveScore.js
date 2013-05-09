@@ -11,14 +11,11 @@ define([
 
     var LiveScore = Backbone.Model.extend({
       
-      defaults: {
-        date: null
-      },
-      
-      initialize: function( options ) {
+      initialize: function() {
 
-        this.options = options;
-      
+        this.listenTo( this, 'change:date', this.fetchData );
+        this.listenTo( this, 'change:tournamentSlug', this.filterTournaments );
+        
       },
       
       fetchHandler: {
@@ -30,7 +27,29 @@ define([
           alert('Error getting data');
         }
         
-      },      
+      },
+      
+      filterTournaments: function(){
+        
+        // When tournament slug changes, update each tournament model visible attribute
+
+        // Check if the tournament selected exists in our current collection         
+        var tournamentExists = app.tournaments.findWhere({ slug: this.get('tournamentSlug') }) !== undefined; 
+        
+        app.tournaments.each(function( tournament, index, list ){
+          if ( this.get('tournamentSlug') != null ){
+            // There is a tournament selected
+            if ( tournamentExists )
+              tournament.set( "visible", this.get('tournamentSlug') == tournament.get('slug') );
+            else
+              tournament.set( "visible", true );
+          } else {
+            // No tournament selected, show all
+            tournament.set( "visible", true );
+          }
+        }, this);
+        
+      },
       
       fetchData: function(){
         
@@ -50,19 +69,21 @@ define([
         var now = new Date();
         
         var date = $.datepicker.formatDate( "yy-mm-dd", now );
-        if ( this.get('date') !== undefined ){
+        if ( this.get('date') !== null ){
           date = this.get('date');
         }
         
         // TODO: change this path when integrating
         return "/app/"+date+"_livescore.json?v="+ now.getHours() + now.getMinutes() + now.getSeconds(); 
         
-      }, 
+      },
       
       parse: function( response, options ){
         
         // Refresh tournament data
-        app.tournaments.set( response.tournaments ); 
+        app.tournaments.set( response.tournaments );
+        
+        app.tournaments.trigger('afterSet');
         
         // Now refresh matches data for each tournament model
         _.each( response.tournaments, function( respTnmnt ){
@@ -79,6 +100,9 @@ define([
           });
             
         });
+        
+        // Call the tournament filter to ensure show/hide toggle
+        this.filterTournaments();
         
       }
       

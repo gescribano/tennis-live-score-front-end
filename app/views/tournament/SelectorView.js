@@ -16,17 +16,15 @@ define([
       
       initialize: function( options ) {
         
-        //TODO: this would be being fired many times, b/c I use SET to refresh the tournaments collection
-        options.tournaments.on('add remove', function(){
-          
+        options.tournaments.on('afterSet', function(){
           this.render();
-          
         }, this);
         
       },
       
       serialize: function() {
         return {
+          model: this.model,
           tournaments: this.options.tournaments
         };
       },
@@ -36,8 +34,9 @@ define([
       },
       
       tournamentSelected: function(){
-        var tournament = this.$el.find("select").val();
-        //console.log( "Tournament selected: " + tournament );
+        var tournamentSlug = this.$el.find("select").val();
+        // Route to the new tournament
+        app.router.goToTournament( tournamentSlug );
       },
       
       afterRender: function() {
@@ -45,13 +44,14 @@ define([
         this.$el.find("select").chosen({
           allow_single_deselect: true
         }).trigger("liszt:updated");
-
+        
       },      
 
       cleanup: function() {
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
         //TODO: clean native event listeners?
+        this.options.tournaments.off(null, null, this);
       }
 
     });

@@ -28,7 +28,7 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
       // Use main layout and set Views.
       app.useLayout("main-layout").setViews({
         "#date-selector": new DateSelectorView({ model: liveScore }),
-        "#tournament-selector": new TournamentSelectorView( { tournaments: tournaments } ),
+        "#tournament-selector": new TournamentSelectorView( { tournaments: tournaments, model: liveScore } ),
         "#tournament-list": new TournamentListView( { tournaments: tournaments } )
       }).render();
       
@@ -36,25 +36,65 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
 
     // Shortcut for building a url.
     go: function() {
-      return this.navigate(_.toArray(arguments).join("/"), true);
+      return this.navigate( _.toArray(arguments).join("/"), true );
+    },
+    
+    goToDate: function( date ){
+      
+      var destUrl = 'date/'+date;
+      if ( this.liveScore.get("tournamentSlug") != null ){
+        destUrl += "/tournament/"+this.liveScore.get("tournamentSlug");
+      }
+      this.go( destUrl );
+      
+    },
+    
+    goToTournament: function( tournamentSlug ){
+      
+      var destUrl = "";
+      if ( this.liveScore.get("date") != null ){
+        destUrl += "date/"+this.liveScore.get("date");
+      }
+      if ( tournamentSlug != '' ){
+        if ( destUrl != '' ) destUrl += "/";
+        destUrl += 'tournament/'+tournamentSlug;
+      }
+      this.go( destUrl );
+      
     },
     
     routes: {
       "": "index",
-      "date/:date": "showByDate"
+      "date/:date": "showByDate",
+      "tournament/:tournament_slug": "showByTournament",
+      "date/:date/tournament/:tournament_slug": "showByTournamentAndDate"
     },
     
     index: function() {
       
-      this.liveScore.clear();
-      this.liveScore.fetchData();
+      this.liveScore.set("date", null );
+      this.liveScore.set("tournamentSlug", null );
       
     },
 
     showByDate: function( date ) {
       
       this.liveScore.set("date", date );
-      this.liveScore.fetchData();
+      this.liveScore.set("tournamentSlug", null );
+      
+    },
+    
+    showByTournament: function( tournamentSlug ) {
+
+      this.liveScore.set("date", null );
+      this.liveScore.set("tournamentSlug", tournamentSlug );
+      
+    },
+    
+    showByTournamentAndDate: function( date, tournamentSlug ) {
+
+      this.liveScore.set("date", date );
+      this.liveScore.set("tournamentSlug", tournamentSlug );
       
     }
     

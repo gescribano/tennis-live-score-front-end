@@ -16,7 +16,8 @@ define([
         location: '',
         name: '',
         surface: '',
-        slug: ''
+        slug: '',
+        visible: true
       },
       
       constructor: function() {

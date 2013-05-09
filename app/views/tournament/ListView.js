@@ -31,14 +31,6 @@ define([
         
       },
       
-      beforeRender: function() {
-
-      },
-      
-      afterRender: function() {
-        
-      },      
-
       cleanup: function() {
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.

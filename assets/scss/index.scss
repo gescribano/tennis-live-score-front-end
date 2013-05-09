@@ -171,6 +171,9 @@ h1{
  */
 
 .tournament{
+  &.hidden{
+    display: none;
+  }
   h2{
     margin: 20px 0 0 0;
     color: #353434;

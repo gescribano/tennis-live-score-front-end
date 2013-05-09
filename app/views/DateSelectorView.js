@@ -31,7 +31,7 @@ define([
           // This should only happen on page load, or history changes
           
           var date = new Date();
-          if ( modelDateString !== undefined )
+          if ( modelDateString !== null )
             date = $.datepicker.parseDate( "yy-mm-dd", modelDateString );
           
           // Update datepickers popup selected date
@@ -60,7 +60,7 @@ define([
       newDateSelected: function(){
         var date = this.$el.find("input").datepicker( "getDate" );
         // Route to the new date
-        app.router.go( 'date' , $.datepicker.formatDate( "yy-mm-dd", date ) );
+        app.router.goToDate( $.datepicker.formatDate( "yy-mm-dd", date ) );
       },
       
       cleanup: function() {

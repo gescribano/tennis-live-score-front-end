@@ -37,9 +37,15 @@ define([
         }, this);
         
         //When the tournament is removed from the collection
-        this.listenTo(this.model, 'removed', this.remove);
+        this.listenTo( this.model, 'removed', this.remove );
         
-        //TODO: this.listenTo(this.model, 'visible', this.toggleVisible);
+        this.listenTo( this.model, 'change:visible', this.toggleVisible );
+        
+      },
+      
+      toggleVisible: function(){
+        
+        this.$el.find(".tournament").toggleClass( 'hidden', !this.model.get("visible") );
         
       },
       

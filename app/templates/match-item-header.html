@@ -11,13 +11,13 @@ switch( model.get('status') ){
   case 'Finished':
     %><span class="status finished">FINISHED (<%= model.get('duration') %>)</span><%
     break;
-  case 'Started':
+  case 'In progress':
     %><span class="status in-progress">IN PROGRESS</span><%
     break;
   case 'Cancelled':
     %><span class="status finished">CANCELLED</span><%
     break;
   default:
-    %><span class="status finished">UNKNOWN</span><%
+    %><span class="status finished"><%= model.get('status') %></span><%
 }
 %>
