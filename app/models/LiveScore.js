@@ -59,7 +59,7 @@ define([
         window.clearTimeout( window.lsTimeoutId );
         
         // Set reload interval
-        window.lsTimeoutId = setTimeout( _.bind( this.fetchData, this ), 1000*500 ); 
+        window.lsTimeoutId = setTimeout( _.bind( this.fetchData, this ), 1000*15 ); 
         //TODO: decrease the time to 10/15 seconds        
         
       },
