@@ -70,7 +70,8 @@ define([
         }
         
         // TODO: change this path when integrating
-        return "/app/"+date+"_livescore.json?v="+ now.getHours() + now.getMinutes() + now.getSeconds(); 
+        //return "/app/"+date+"_livescore.json?v="+ now.getHours() + now.getMinutes() + now.getSeconds(); 
+        return "http://static.tennis.com/pulse/"+date+"_livescores_new.json?v="+ now.getHours() + now.getMinutes() + now.getSeconds(); 
         
       },
       
