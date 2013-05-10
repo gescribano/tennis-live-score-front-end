@@ -396,7 +396,57 @@ return __p;
 this["JST"]["app/templates/main-layout.html"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<h1>Live Scores <span>&nbsp;</span></h1>\n\n<div class="filters clearfix">\n\n  <div id="date-selector" class="filter left clearfix"></div>\n\n  <div id="tournament-selector" class="filter right clearfix"></div>\n\n</div>\n\n<div id="tournament-list"></div>\n\n\n';
+__p+='<h1>Live Scores <span>&nbsp;</span></h1>\n\n<div id="messages"></div>\n\n<div class="filters clearfix">\n\n  <div id="date-selector" class="filter left clearfix"></div>\n\n  <div id="tournament-selector" class="filter right clearfix"></div>\n\n</div>\n\n<div id="tournament-list"></div>\n\n\n';
+}
+return __p;
+};
+
+this["JST"]["app/templates/match-item-header.html"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<span class="round">'+
+( model.get('round') )+
+'<!-- <span class="sep">::</span> Court Name <span class="sep">::</span> Match # --></span>\n<a class="head-to-head" href="'+
+( model.get('head_to_head_url') )+
+'"><span class="list">HEAD TO HEAD</span><span class="boxed">H2H</span></a>\n';
+ 
+switch( model.get('status') ){
+  case 'Not started': 
+    
+;__p+='<span class="status upcoming">UPCOMING</span>';
+
+    break;
+  case 'Postponed':
+    
+;__p+='<span class="status finished">POSTPONED</span>';
+
+    break;
+  case 'Finished':
+    
+;__p+='<span class="status finished">FINISHED ('+
+( model.get('duration') )+
+')</span>';
+
+    break;
+  case 'In progress':
+    
+;__p+='<span class="status in-progress">IN PROGRESS</span>';
+
+    break;
+  case 'Cancelled':
+    
+;__p+='<span class="status finished">CANCELLED</span>';
+
+    break;
+  default:
+    
+;__p+='<span class="status finished">'+
+( model.get('status') )+
+'</span>';
+
+}
+
+;__p+='';
 }
 return __p;
 };
@@ -404,45 +454,15 @@ return __p;
 this["JST"]["app/templates/match-item.html"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="header clearfix">\n  <span class="round">'+
-( model.get('round') )+
-'<!-- <span class="sep">::</span> Court Name <span class="sep">::</span> Match # --></span>\n  <a class="head-to-head" href="#"><span class="list">HEAD TO HEAD</span><span class="boxed">H2H</span></a>\n  ';
- 
-    switch( model.get('status') ){
-      case 'Not started': 
-        
-;__p+='<span class="status upcoming">UPCOMING</span>';
+__p+='<div class="header clearfix"></div>\n\n<div class="players"></div>\n';
+}
+return __p;
+};
 
-        break;
-      case 'Postponed':
-        
-;__p+='<span class="status finished">POSTPONED</span>';
-
-        break;
-      case 'Finished':
-        
-;__p+='<span class="status finished">FINISHED ('+
-( model.get('duration') )+
-')</span>';
-
-        break;
-      case 'Started':
-        
-;__p+='<span class="status in-progress">IN PROGRESS</span>';
-
-        break;
-      case 'Cancelled':
-        
-;__p+='<span class="status finished">CANCELLED</span>';
-
-        break;
-      default:
-        
-;__p+='<span class="status finished">UNKNOWN</span>';
-
-    }
-    
-;__p+='\n</div>\n\n<div class="players"></div>\n';
+this["JST"]["app/templates/messages.html"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class="header clearfix"></div>\n\n<div class="players"></div>\n';
 }
 return __p;
 };
@@ -454,9 +474,25 @@ __p+='<div class="player clearfix '+
 _.escape( model.get('is_serving')?'serving':'' )+
 ' '+
 _.escape( model.get('is_winner')?'winner':'' )+
-' ">\n  <span class="name-icons">\n    <span class="name">'+
+' ">\n  <span class="name-icons">\n    <span class="name">\n      ';
+ if ( model.get('country') != '' ){ 
+;__p+='\n        <span class="flag flags-'+
+_.escape( model.get('country').toLowerCase() )+
+'"></span>\n      ';
+ } 
+;__p+='\n      ';
+ if ( model.get('url') != '' ){ 
+;__p+='\n        <a href="'+
+_.escape( model.get('url') )+
+'" data-bypass="1" target="_blank">'+
 ( model.get('name') )+
-' (9)</span>\n    <span class="icons">\n      ';
+'</a>\n      ';
+ } else { 
+;__p+='\n        '+
+( model.get('name') )+
+' \n      ';
+ } 
+;__p+='\n      <span> (9)</span>\n    </span>\n    <span class="icons">\n      ';
  if ( model.get('shirt') != '' ){ 
 ;__p+='\n      <a class="icon shirt" href="'+
 _.escape( model.get('shirt') )+
@@ -492,7 +528,9 @@ var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+='<span><strong>Location:</strong> '+
 ( model.get('location') )+
-', Country</span>\n<span><strong>Court Type:</strong> '+
+', '+
+( model.get('country') )+
+'</span>\n<span><strong>Court Type:</strong> '+
 ( model.get('surface') )+
 '</span>';
 }
@@ -504,7 +542,7 @@ var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
 __p+=''+
 ( model.get('name') )+
-' (Men’s Singles)';
+'';
 }
 return __p;
 };
@@ -524,7 +562,9 @@ __p+='<label>Tournament</label>\n<div class="selector">\n  <select id="tournamen
  tournaments.each(function(tour) { 
 ;__p+='\n      <option value="'+
 ( tour.get('slug') )+
-'">'+
+'" '+
+(  ( model.get("tournamentSlug") == tour.get('slug') )?'selected="selected"':''  )+
+' >'+
 ( tour.get('name') )+
 '</option>\n    ';
  }); 
@@ -9681,36 +9721,68 @@ define('views/DateSelectorView',[
   ],
 
   // Module Definition
-  function (app, $, Backbone, _) {
+  function ( app, $, Backbone, _ ) {
 
     var DateSelectorView = Backbone.View.extend({
       
       template: 'date-selector',
-
+      
+      initialize: function( options ) {
+        
+        this.listenTo( this.model, 'change:date', this.modelDateChanged );
+        
+      },
+      
+      modelDateChanged: function(){
+        
+        var modelDateString = this.model.get('date');
+        
+        var currentSelectedDate = $.datepicker.formatDate( "yy-mm-dd", this.$el.find("input").datepicker( "getDate" ) );
+        
+        // Only update datepicker if the model date is different form current selected date
+        if ( currentSelectedDate !== modelDateString ){
+          // This should only happen on page load, or history changes
+          
+          var date = new Date();
+          if ( modelDateString !== null )
+            date = $.datepicker.parseDate( "yy-mm-dd", modelDateString );
+          
+          // Update datepickers popup selected date
+          this.$el.find("input").datepicker( "setDate", date );
+          
+        }
+        
+      },
+      
       afterRender: function() {
         
+        // Apply Jquery date picker plugin
         this.$el.find("input").datepicker({
           showOn: "button",
           buttonImage: "/assets/img/calendar.gif",
           buttonImageOnly: true,
           dateFormat: 'M d, yy'
-        }).datepicker( "setDate", new Date() );
+        });
         
       },
       
       events: {
-        "change input": "dateSelected"
+        "change input": "newDateSelected"
       },
       
-      dateSelected: function(){
+      newDateSelected: function(){
         var date = this.$el.find("input").datepicker( "getDate" );
         // Route to the new date
-        app.router.go( 'date' , $.datepicker.formatDate( "yy-mm-dd", date ) );
+        app.router.goToDate( $.datepicker.formatDate( "yy-mm-dd", date ) );
       },
       
       cleanup: function() {
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
+        
+        this.model.off(null, null, this);
+        
+        //TODO: clean native event listeners?
       }
 
     });
@@ -9751,17 +9823,15 @@ define('views/tournament/SelectorView',[
       
       initialize: function( options ) {
         
-        //TODO: this would be being fired many times, b/c I use SET to refresh the tournaments collection
-        options.tournaments.on('add remove', function(){
-          
+        options.tournaments.on('afterSet', function(){
           this.render();
-          
         }, this);
         
       },
       
       serialize: function() {
         return {
+          model: this.model,
           tournaments: this.options.tournaments
         };
       },
@@ -9771,8 +9841,9 @@ define('views/tournament/SelectorView',[
       },
       
       tournamentSelected: function(){
-        var tournament = this.$el.find("select").val();
-        //console.log( "Tournament selected: " + tournament );
+        var tournamentSlug = this.$el.find("select").val();
+        // Route to the new tournament
+        app.router.goToTournament( tournamentSlug );
       },
       
       afterRender: function() {
@@ -9780,12 +9851,14 @@ define('views/tournament/SelectorView',[
         this.$el.find("select").chosen({
           allow_single_deselect: true
         }).trigger("liszt:updated");
-
+        
       },      
 
       cleanup: function() {
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
+        //TODO: clean native event listeners?
+        this.options.tournaments.off(null, null, this);
       }
 
     });
@@ -9815,6 +9888,9 @@ define('views/player/ItemView',[
       initialize: function( options ) {
         
         this.listenTo( this.model, 'change', this.render );
+
+        //When the Player is removed from the collection
+        this.listenTo( this.model, 'removed', this.remove );
         
       },      
 
@@ -9831,6 +9907,7 @@ define('views/player/ItemView',[
       cleanup: function() {
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
+        this.model.off(null, null, this);
       }
 
     });
@@ -9841,17 +9918,61 @@ define('views/player/ItemView',[
   }
 
 );
+define('views/match/HeaderView',[
+  // The App
+  'app',
+  // Dependencies
+  'jquery', 'backbone', 'lodash'
+  ],
+
+  // Module Definition
+  function ( app, $, Backbone, _ ) {
+
+    var MatchHeaderView = Backbone.View.extend({
+      
+      tagName: 'span',
+      
+      template: 'match-item-header',
+
+      initialize: function( options ) {
+
+        this.model.on('change:status change:round', function( model, options ){
+          this.render();
+        }, this);
+
+      },
+
+      serialize: function() {
+        return { 
+          model: this.model
+        };
+      },
+      
+      cleanup: function() {
+        // This is called after this.remove() and should be used to
+        // cleanup event listeners, etc.
+        this.model.off(null, null, this);
+      }
+
+    });
+
+    // Module Exports
+    return MatchHeaderView;
+
+  }
+
+);
 define('views/match/ItemView',[
   // The App
   'app',
   // Dependencies
   'jquery', 'backbone', 'lodash',
   // Sub-Views
-  'views/player/ItemView'
+  'views/player/ItemView', 'views/match/HeaderView'
   ],
 
   // Module Definition
-  function ( app, $, Backbone, _, PlayerItemView ) {
+  function ( app, $, Backbone, _, PlayerItemView, MatchHeaderView ) {
 
     var MatchItemView = Backbone.View.extend({
       
@@ -9861,7 +9982,11 @@ define('views/match/ItemView',[
 
       initialize: function( options ) {
         
-        //TODO: check what happens when removing players, listen to remove? will players be removed?
+        // Child view for header update
+        this.setViews({
+          ".header": new MatchHeaderView({ model: this.model })
+        });
+        
         options.model.players.on('add', function( model, collection, options ){
           
           this.insertView( ".players", new PlayerItemView({
@@ -9869,6 +9994,14 @@ define('views/match/ItemView',[
           })).render();
           
         }, this);
+        
+        options.model.players.on('remove', function( model, collection, options ){
+          // The removal is handled on the Player ItemView
+          model.trigger('removed');
+        }, this);
+        
+        //When the Match is removed from the collection
+        this.listenTo(this.model, 'removed', this.remove);
         
       },
       
@@ -9886,6 +10019,7 @@ define('views/match/ItemView',[
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
         this.options.model.players.off(null, null, this);
+        this.model.off(null, null, this);
       }
 
     });
@@ -10017,10 +10151,21 @@ define('views/tournament/ItemView',[
           
         }, this);
         
+        this.model.matches.on('remove', function( model, collection, options ){
+          // The removal is handled on the Match ItemView
+          model.trigger("removed");
+        }, this);
         
-        this.listenTo(this.model, 'removed', this.remove);
+        //When the tournament is removed from the collection
+        this.listenTo( this.model, 'removed', this.remove );
         
-        //TODO: this.listenTo(this.model, 'visible', this.toggleVisible);
+        this.listenTo( this.model, 'change:visible', this.toggleVisible );
+        
+      },
+      
+      toggleVisible: function(){
+        
+        this.$el.find(".tournament").toggleClass( 'hidden', !this.model.get("visible") );
         
       },
       
@@ -10115,22 +10260,12 @@ define('views/tournament/ListView',[
         }, this);
         
         this.options.tournaments.on('remove', function( model, collection, options ){
-          
           // The removal is handled on the Tournament ItemView
           model.trigger("removed");
-          
         }, this);
         
       },
       
-      beforeRender: function() {
-
-      },
-      
-      afterRender: function() {
-        
-      },      
-
       cleanup: function() {
         // This is called after this.remove() and should be used to
         // cleanup event listeners, etc.
@@ -10141,6 +10276,56 @@ define('views/tournament/ListView',[
 
     // Module Exports
     return TournamentListView;
+
+  }
+
+);
+define('views/MessagesView',[
+  // The App
+  'app',
+  // Dependencies
+  'jquery', 'backbone', 'lodash'
+  ],
+
+  // Module Definition
+  function ( app, $, Backbone, _ ) {
+
+    var MessagesView = Backbone.View.extend({
+      
+      template: 'messages',
+      
+      initialize: function( options ) {
+        
+        this.listenTo( this.model, 'change:fetch_error', this.render );
+        
+      },
+      
+      serialize: function(){
+        
+        var message = {
+          text: '',
+          error: false
+        };
+        
+        if ( this.model.get("fetch_error") ){
+          message.error = true;
+          message.text = 'There was an error getting the results.';
+        }
+        
+        return message;
+        
+      },
+      
+      cleanup: function() {
+        // This is called after this.remove() and should be used to
+        // cleanup event listeners, etc.
+        this.model.off(null, null, this);
+      }
+
+    });
+
+    // Module Exports
+    return MessagesView;
 
   }
 
@@ -10163,6 +10348,7 @@ define('models/Player',[
         shirt: "",
         racket: "",
         shoes: "",
+        url: "",
         set_games: []
       }
       
@@ -10214,8 +10400,8 @@ define('models/Match',[
       defaults: {
         status: "",
         duration: "",
-        gender: "",
-        round: ""
+        round: "",
+        head_to_head_url: ""
       },
 
       constructor: function() {
@@ -10273,7 +10459,8 @@ define('models/Tournament',[
         location: '',
         name: '',
         surface: '',
-        slug: ''
+        slug: '',
+        visible: true
       },
       
       constructor: function() {
@@ -10326,26 +10513,56 @@ define('models/LiveScore',[
 
     var LiveScore = Backbone.Model.extend({
       
-      initialize: function( options ) {
+      initialize: function() {
 
-        this.options = options;
-      
+        this.listenTo( this, 'change:date', this.fetchData );
+        this.listenTo( this, 'change:tournamentSlug', this.filterTournaments );
+        
       },
       
       fetchHandler: {
         
         success: function(model, resp) {
-          // Do nothing
+          this.set("fetch_error", false);
         },
         error: function(model, resp) {
-          alert('Error getting data');
+          this.set("fetch_error", true);
         }
         
-      },      
+      },
+      
+      filterTournaments: function(){
+        
+        // When tournament slug changes, update each tournament model visible attribute
+
+        // Check if the tournament selected exists in our current collection         
+        var tournamentExists = app.tournaments.findWhere({ slug: this.get('tournamentSlug') }) !== undefined; 
+        
+        app.tournaments.each(function( tournament, index, list ){
+          if ( this.get('tournamentSlug') !== null ){
+            // There is a tournament selected
+            if ( tournamentExists )
+              tournament.set( "visible", this.get('tournamentSlug') == tournament.get('slug') );
+            else
+              tournament.set( "visible", true );
+          } else {
+            // No tournament selected, show all
+            tournament.set( "visible", true );
+          }
+        }, this);
+        
+      },
       
       fetchData: function(){
         
         this.fetch( this.fetchHandler );
+        
+        // clearing the timeout if it already exists
+        window.clearTimeout( window.lsTimeoutId );
+        
+        // Set reload interval
+        window.lsTimeoutId = setTimeout( _.bind( this.fetchData, this ), 1000*15 ); 
+        //TODO: decrease the time to 10/15 seconds        
         
       },
             
@@ -10354,19 +10571,21 @@ define('models/LiveScore',[
         var now = new Date();
         
         var date = $.datepicker.formatDate( "yy-mm-dd", now );
-        if ( this.options.date !== undefined ){
-          date = this.options.date;
+        if ( this.get('date') !== null ){
+          date = this.get('date');
         }
         
-        // TODO: change this when integrating
+        // TODO: change this path when integrating
         return "/app/"+date+"_livescore.json?v="+ now.getHours() + now.getMinutes() + now.getSeconds(); 
         
-      }, 
+      },
       
       parse: function( response, options ){
         
         // Refresh tournament data
-        app.tournaments.set( response.tournaments ); 
+        app.tournaments.set( response.tournaments );
+        
+        app.tournaments.trigger('afterSet');
         
         // Now refresh matches data for each tournament model
         _.each( response.tournaments, function( respTnmnt ){
@@ -10384,6 +10603,9 @@ define('models/LiveScore',[
             
         });
         
+        // Call the tournament filter to ensure show/hide toggle
+        this.filterTournaments();
+        
       }
       
     });
@@ -10400,30 +10622,32 @@ define('router',[
   // Layout
   'views/layouts/MainLayout',
   // Views
-  'views/DateSelectorView', 'views/tournament/SelectorView', 'views/tournament/ListView', 
+  'views/DateSelectorView', 'views/tournament/SelectorView', 'views/tournament/ListView', 'views/MessagesView', 
   // Collections
   'collections/Tournaments', 
   // Models
   'models/LiveScore'
 ],
 
-function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentListView, Tournaments, LiveScore ) {
+function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentListView, MessagesView, Tournaments, LiveScore ) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
     
     initialize: function() {
-      //TODO: parse JSON and fill data
+      
+      var liveScore = new LiveScore();
+      this.liveScore = liveScore;
       
       var tournaments = new Tournaments();
-      
-      // Ensure the app has references to the collections.
+      // Ensure the app has references to the main Tournament collection
       _.extend(app, { tournaments: tournaments });
-      
+
       // Use main layout and set Views.
       app.useLayout("main-layout").setViews({
-        "#date-selector": new DateSelectorView(),
-        "#tournament-selector": new TournamentSelectorView( { tournaments: tournaments } ),
+        "#messages": new MessagesView({ model: liveScore }),
+        "#date-selector": new DateSelectorView({ model: liveScore }),
+        "#tournament-selector": new TournamentSelectorView( { tournaments: tournaments, model: liveScore } ),
         "#tournament-list": new TournamentListView( { tournaments: tournaments } )
       }).render();
       
@@ -10431,43 +10655,67 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
 
     // Shortcut for building a url.
     go: function() {
-      return this.navigate(_.toArray(arguments).join("/"), true);
+      return this.navigate( _.toArray(arguments).join("/"), true );
+    },
+    
+    goToDate: function( date ){
+      
+      var destUrl = 'date/'+date;
+      if ( this.liveScore.get("tournamentSlug") !== null ){
+        destUrl += "/tournament/"+this.liveScore.get("tournamentSlug");
+      }
+      this.go( destUrl );
+      
+    },
+    
+    goToTournament: function( tournamentSlug ){
+      
+      var destUrl = '';
+      if ( this.liveScore.get("date") !== null ){
+        destUrl += "date/"+this.liveScore.get("date");
+      }
+      if ( tournamentSlug !== '' ){
+        if ( destUrl !== '' ) destUrl += "/";
+        destUrl += 'tournament/'+tournamentSlug;
+      }
+      this.go( destUrl );
+      
     },
     
     routes: {
       "": "index",
-      "date/:date": "showByDate"
+      "date/:date": "showByDate",
+      "tournament/:tournament_slug": "showByTournament",
+      "date/:date/tournament/:tournament_slug": "showByTournamentAndDate"
     },
     
     index: function() {
       
-      this.fetchScores();
+      this.liveScore.set("date", null );
+      this.liveScore.set("tournamentSlug", null );
       
     },
 
     showByDate: function( date ) {
       
-      this.fetchScores( date );
+      this.liveScore.set("date", date );
+      this.liveScore.set("tournamentSlug", null );
       
     },
     
-    fetchScores: function( date ) {
+    showByTournament: function( tournamentSlug ) {
+
+      this.liveScore.set("date", null );
+      this.liveScore.set("tournamentSlug", tournamentSlug );
       
-      var liveScore = new LiveScore({
-        date: date
-      });
+    },
+    
+    showByTournamentAndDate: function( date, tournamentSlug ) {
+
+      this.liveScore.set("date", date );
+      this.liveScore.set("tournamentSlug", tournamentSlug );
       
-      // clearing the interval if it already exists
-      window.clearInterval( window.lsIntervalId );
-      
-      // Set reload interval
-      window.lsIntervalId = setInterval(function () {
-          liveScore.fetchData();
-      }, 1000*500000); //TODO: decrease the time to 10/15 seconds
-      
-      liveScore.fetchData();
-      
-    }    
+    }
     
   });
 

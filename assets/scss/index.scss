@@ -15,8 +15,6 @@
 
 
 
-
-
 /*-- Main variables. -----------------------------------------------*/
 $in-progress-color: #4acc4a; 
 $upcoming-color: #e0ad10;
@@ -110,6 +108,16 @@ h1{
     background: url('../img/header_left_bg.png');
     height: 82px;
     width: 41px;
+  }
+}
+
+/*
+ * Messages
+ */
+#messages{
+  p.error{
+    color: red;
+    margin: 20px 0 0 0;
   }
 }
 

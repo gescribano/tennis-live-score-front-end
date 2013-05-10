@@ -24,7 +24,7 @@ define([
         
         var modelDateString = this.model.get('date');
         
-        var currentSelectedDate = $.datepicker.formatDate( "yy-mm-dd", this.$el.find("input").datepicker( "getDate" ) )
+        var currentSelectedDate = $.datepicker.formatDate( "yy-mm-dd", this.$el.find("input").datepicker( "getDate" ) );
         
         // Only update datepicker if the model date is different form current selected date
         if ( currentSelectedDate !== modelDateString ){

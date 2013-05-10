@@ -18,17 +18,6 @@ define([
         
       },
       
-      fetchHandler: {
-        
-        success: function(model, resp) {
-          // Do nothing
-        },
-        error: function(model, resp) {
-          alert('Error getting data');
-        }
-        
-      },
-      
       filterTournaments: function(){
         
         // When tournament slug changes, update each tournament model visible attribute
@@ -37,7 +26,7 @@ define([
         var tournamentExists = app.tournaments.findWhere({ slug: this.get('tournamentSlug') }) !== undefined; 
         
         app.tournaments.each(function( tournament, index, list ){
-          if ( this.get('tournamentSlug') != null ){
+          if ( this.get('tournamentSlug') !== null ){
             // There is a tournament selected
             if ( tournamentExists )
               tournament.set( "visible", this.get('tournamentSlug') == tournament.get('slug') );
@@ -53,7 +42,14 @@ define([
       
       fetchData: function(){
         
-        this.fetch( this.fetchHandler );
+        this.fetch({
+          success: function( model, resp ) {
+            model.set("fetch_error", false);
+          },
+          error: function( model, resp ) {
+            model.set("fetch_error", true);
+          }
+        });
         
         // clearing the timeout if it already exists
         window.clearTimeout( window.lsTimeoutId );

@@ -20,7 +20,7 @@ define([
         
         // Child view for header update
         this.setViews({
-          ".header": new MatchHeaderView({ model: this.model }),
+          ".header": new MatchHeaderView({ model: this.model })
         });
         
         options.model.players.on('add', function( model, collection, options ){

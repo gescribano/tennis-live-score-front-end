@@ -1,17 +1,15 @@
 define([
   // Application.
   "app",
-  // Layout
-  'views/layouts/MainLayout',
   // Views
-  'views/DateSelectorView', 'views/tournament/SelectorView', 'views/tournament/ListView', 
+  'views/DateSelectorView', 'views/tournament/SelectorView', 'views/tournament/ListView', 'views/MessagesView', 
   // Collections
   'collections/Tournaments', 
   // Models
   'models/LiveScore'
 ],
 
-function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentListView, Tournaments, LiveScore ) {
+function( app, DateSelectorView, TournamentSelectorView, TournamentListView, MessagesView, Tournaments, LiveScore ) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
@@ -27,6 +25,7 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
 
       // Use main layout and set Views.
       app.useLayout("main-layout").setViews({
+        "#messages": new MessagesView({ model: liveScore }),
         "#date-selector": new DateSelectorView({ model: liveScore }),
         "#tournament-selector": new TournamentSelectorView( { tournaments: tournaments, model: liveScore } ),
         "#tournament-list": new TournamentListView( { tournaments: tournaments } )
@@ -42,7 +41,7 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
     goToDate: function( date ){
       
       var destUrl = 'date/'+date;
-      if ( this.liveScore.get("tournamentSlug") != null ){
+      if ( this.liveScore.get("tournamentSlug") !== null ){
         destUrl += "/tournament/"+this.liveScore.get("tournamentSlug");
       }
       this.go( destUrl );
@@ -51,12 +50,12 @@ function( app, MainLayout, DateSelectorView, TournamentSelectorView, TournamentL
     
     goToTournament: function( tournamentSlug ){
       
-      var destUrl = "";
-      if ( this.liveScore.get("date") != null ){
+      var destUrl = '';
+      if ( this.liveScore.get("date") !== null ){
         destUrl += "date/"+this.liveScore.get("date");
       }
-      if ( tournamentSlug != '' ){
-        if ( destUrl != '' ) destUrl += "/";
+      if ( tournamentSlug !== '' ){
+        if ( destUrl !== '' ) destUrl += "/";
         destUrl += 'tournament/'+tournamentSlug;
       }
       this.go( destUrl );
