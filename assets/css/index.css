@@ -32,7 +32,7 @@ section {
  */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/flags\/\*\.png}line{font-family:\000032042}}
 .flags-sprite, .flags-aa, .flags-ad, .flags-ae, .flags-af, .flags-ag, .flags-ai, .flags-al, .flags-am, .flags-ao, .flags-aq, .flags-ar, .flags-as, .flags-at, .flags-au, .flags-aw, .flags-ax, .flags-az, .flags-ba, .flags-bb, .flags-bd, .flags-be, .flags-bf, .flags-bg, .flags-bh, .flags-bi, .flags-bj, .flags-bl, .flags-bm, .flags-bn, .flags-bo, .flags-bq, .flags-br, .flags-bs, .flags-bt, .flags-bv, .flags-bw, .flags-by, .flags-bz, .flags-ca, .flags-cc, .flags-cd, .flags-cf, .flags-cg, .flags-ch, .flags-ci, .flags-ck, .flags-cl, .flags-cm, .flags-cn, .flags-co, .flags-cr, .flags-cu, .flags-cv, .flags-cw, .flags-cx, .flags-cy, .flags-cz, .flags-de, .flags-dj, .flags-dk, .flags-dm, .flags-do, .flags-dz, .flags-ec, .flags-ee, .flags-eg, .flags-eh, .flags-eo, .flags-er, .flags-es, .flags-et, .flags-fi, .flags-fj, .flags-fk, .flags-fm, .flags-fo, .flags-fr, .flags-ga, .flags-gb, .flags-gd, .flags-ge, .flags-gf, .flags-gg, .flags-gh, .flags-gi, .flags-gl, .flags-gm, .flags-gn, .flags-gp, .flags-gq, .flags-gr, .flags-gs, .flags-gt, .flags-gu, .flags-gw, .flags-gy, .flags-hk, .flags-hm, .flags-hn, .flags-hr, .flags-ht, .flags-hu, .flags-id, .flags-ie, .flags-il, .flags-im, .flags-in, .flags-io, .flags-iq, .flags-ir, .flags-is, .flags-it, .flags-je, .flags-jm, .flags-jo, .flags-jp, .flags-ke, .flags-kg, .flags-kh, .flags-ki, .flags-km, .flags-kn, .flags-kp, .flags-kr, .flags-kw, .flags-ky, .flags-kz, .flags-la, .flags-lb, .flags-lc, .flags-li, .flags-lk, .flags-lr, .flags-ls, .flags-lt, .flags-lu, .flags-lv, .flags-ly, .flags-ma, .flags-mc, .flags-md, .flags-me, .flags-mf, .flags-mg, .flags-mh, .flags-mk, .flags-ml, .flags-mm, .flags-mn, .flags-mo, .flags-mp, .flags-mq, .flags-mr, .flags-ms, .flags-mt, .flags-mu, .flags-mv, .flags-mw, .flags-mx, .flags-my, .flags-mz, .flags-na, .flags-nc, .flags-ne, .flags-nf, .flags-ng, .flags-ni, .flags-nl, .flags-no, .flags-np, .flags-nr, .flags-nu, .flags-nz, .flags-om, .flags-pa, .flags-pe, .flags-pf, .flags-pg, .flags-ph, .flags-pk, .flags-pl, .flags-pm, .flags-pn, .flags-pr, .flags-ps, .flags-pt, .flags-pw, .flags-py, .flags-qa, .flags-re, .flags-ro, .flags-rs, .flags-ru, .flags-rw, .flags-sa, .flags-sb, .flags-sc, .flags-sd, .flags-se, .flags-sg, .flags-sh, .flags-si, .flags-sj, .flags-sk, .flags-sl, .flags-sm, .flags-sn, .flags-so, .flags-sr, .flags-ss, .flags-st, .flags-sv, .flags-sx, .flags-sy, .flags-sz, .flags-tc, .flags-td, .flags-tf, .flags-tg, .flags-th, .flags-tj, .flags-tk, .flags-tl, .flags-tm, .flags-tn, .flags-to, .flags-tr, .flags-tt, .flags-tv, .flags-tw, .flags-tz, .flags-ua, .flags-ug, .flags-um, .flags-us, .flags-uy, .flags-uz, .flags-va, .flags-vc, .flags-ve, .flags-vg, .flags-vi, .flags-vn, .flags-vu, .flags-wf, .flags-ws, .flags-ye, .flags-yt, .flags-za, .flags-zm, .flags-zw {
-  background: url('/live-scores/assets/img/flags-s35259cdc13.png') no-repeat;
+  background: url('../img/flags-s35259cdc13.png') no-repeat;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/\.rbenv\/versions\/1\.9\.3-p194\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/utilities\/sprites\/_base\.scss}line{font-family:\0000360}}
@@ -1303,33 +1303,33 @@ section {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000371}}
 .icon.icon.on-serve {
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 -43px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000374}}
 .icon.icon.winner {
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 -276px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000377}}
 .icon.icon.shirt {
   padding-left: 22px;
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000381}}
 .icon.icon.shoe {
   padding-left: 22px;
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 -86px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\0000385}}
 .icon.icon.racket {
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 -129px;
 }
@@ -1475,7 +1475,7 @@ h1 span {
   left: 15px;
   width: 23px;
   height: 20px;
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 -319px;
 }
@@ -1496,13 +1496,13 @@ h1 span {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003230}}
 .tournament h2 .toggle a.list {
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 -450px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003233}}
 .tournament h2 .toggle a.boxes {
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 -398px;
 }
@@ -1657,13 +1657,13 @@ h1 span {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003358}}
 .tournament .matches .match .players .player-wrapper .player.serving {
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 9px -28px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003361}}
 .tournament .matches .match .players .player-wrapper .player.winner {
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 9px -261px;
   background-color: #ecfeec;
@@ -1714,7 +1714,7 @@ h1 span {
  */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003406}}
 .tournament.expanded h2 .expand {
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 -357px;
 }
@@ -1724,14 +1724,14 @@ h1 span {
  */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003412}}
 .tournament.boxed h2 .toggle a.list {
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 -224px;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/gonzo\/Documents\/Workspace\/tennis\.com\/bbb-tennis\/assets\/scss\/index\.scss}line{font-family:\00003415}}
 .tournament.boxed h2 .toggle a.boxes {
-  background-image: url('/live-scores/assets/img/icons-s8a500d9855.png');
+  background-image: url('../img/icons-s8a500d9855.png');
   background-repeat: no-repeat;
   background-position: 0 -172px;
 }

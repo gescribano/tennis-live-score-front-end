@@ -19,11 +19,10 @@ javascripts_dir = "assets/js"
 
 # Set this to the root of your project. All resource locations above are
 # considered to be relative to this path.
-# TODO: update this for production
-http_path = "/live-scores/"
+# http_path = "/"
 
 # To use relative paths to assets in your compiled CSS files, set this to true.
-# relative_assets = true
+relative_assets = true
 
 ##
 ## You probably don't need to edit anything below this.
