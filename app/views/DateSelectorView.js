@@ -46,7 +46,7 @@ define([
         // Apply Jquery date picker plugin
         this.$el.find("input").datepicker({
           showOn: "button",
-          buttonImage: "/assets/img/calendar.gif",
+          buttonImage: app.root + "assets/img/calendar.gif",
           buttonImageOnly: true,
           dateFormat: 'M d, yy'
         });

@@ -6,7 +6,7 @@ define([
   // creation.
   var app = {
     // The root path to run the application.
-    root: "/" //TODO: change this to "/live-scores/" when integrating
+    root: "/live-scores/" //TODO: change this to "/live-scores/" when integrating
   };
   
   window.app = app;
