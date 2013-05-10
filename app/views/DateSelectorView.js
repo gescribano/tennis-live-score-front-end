@@ -4,11 +4,11 @@ define([
   // Dependencies
   'jquery', 'backbone', 'lodash',
   // Assets
-  'vendor/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom'
+  'assetsvendor/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min'
   ],
 
   // Module Definition
-  function ( app, $, Backbone, _ ) {
+  function ( app, $, Backbone, _, jqueryui ) {
 
     var DateSelectorView = Backbone.View.extend({
       
@@ -26,7 +26,7 @@ define([
         
         var currentSelectedDate = $.datepicker.formatDate( "yy-mm-dd", this.$el.find("input").datepicker( "getDate" ) );
         
-        // Only update datepicker if the model date is different form current selected date
+        // Only update datepicker date if the model date is different form current selected date (prevent bubbling)
         if ( currentSelectedDate !== modelDateString ){
           // This should only happen on page load, or history changes
           

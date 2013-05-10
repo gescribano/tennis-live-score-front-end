@@ -77,7 +77,15 @@ return __p;
 this["JST"]["app/templates/messages.html"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="header clearfix"></div>\n\n<div class="players"></div>\n';
+__p+='';
+ if ( message.error ){ 
+;__p+='\n<p class="error">'+
+( message.text )+
+'</p>\n';
+ } else { 
+;__p+='\n';
+ } 
+;__p+='';
 }
 return __p;
 };

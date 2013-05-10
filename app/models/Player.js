@@ -17,6 +17,7 @@ define([
         racket: "",
         shoes: "",
         url: "",
+        seed: "",
         set_games: []
       }
       

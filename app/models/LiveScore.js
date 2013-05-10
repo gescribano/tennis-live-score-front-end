@@ -3,7 +3,7 @@ define([
   // Library Dependencies
   'jquery', 'lodash', 'backbone',
   // Assets
-  'vendor/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom'
+  'assetsvendor/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min'
   ],
 
   // Module Definition

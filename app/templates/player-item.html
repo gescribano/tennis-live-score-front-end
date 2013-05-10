@@ -9,7 +9,9 @@
       <% } else { %>
         <%= model.get('name') %> 
       <% } %>
-      <span> (9)</span>
+      <% if ( model.get('seed') != '' ){ %>
+      <span> (<%= model.get('seed') %>)</span>
+      <% } %>
     </span>
     <span class="icons">
       <% if ( model.get('shirt') != '' ){ %>

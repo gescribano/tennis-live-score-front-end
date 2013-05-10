@@ -4,7 +4,7 @@ define([
   // Dependencies
   'jquery', 'backbone', 'lodash',
   // Assets
-  'vendor/chosen/chosen/chosen.jquery.min'
+  'assetsvendor/chosen/chosen/chosen.jquery.min'
   ],
 
   // Module Definition

@@ -23,7 +23,7 @@ function( app, DateSelectorView, TournamentSelectorView, TournamentListView, Mes
       // Ensure the app has references to the main Tournament collection
       _.extend(app, { tournaments: tournaments });
 
-      // Use main layout and set Views.
+      // Use main-layout and set Views.
       app.useLayout("main-layout").setViews({
         "#messages": new MessagesView({ model: liveScore }),
         "#date-selector": new DateSelectorView({ model: liveScore }),
