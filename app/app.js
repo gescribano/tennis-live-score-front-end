@@ -79,7 +79,7 @@ define([
 
       // Create a new Layout with options.
       var layout = new Backbone.Layout(_.extend({
-        el: "#main"
+        el: "#main" //TODO: change this when integrating if needed
       }, options));
 
       // Cache the refererence.

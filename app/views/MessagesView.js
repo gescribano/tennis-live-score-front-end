@@ -29,7 +29,6 @@ define([
           message.error = true;
           message.text = 'There was an error getting the results.';
         }
-        console.log(message);
         return { 
           message: message 
         };
