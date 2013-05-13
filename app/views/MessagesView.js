@@ -1,12 +1,9 @@
 define([
-  // The App
-  'app',
-  // Dependencies
-  'jquery', 'backbone', 'lodash'
+  'app'
   ],
 
   // Module Definition
-  function ( app, $, Backbone, _ ) {
+  function ( app ) {
 
     var MessagesView = Backbone.View.extend({
       
@@ -15,6 +12,7 @@ define([
       initialize: function( options ) {
         
         this.listenTo( this.model, 'change:fetch_error', this.render );
+        this.listenTo( this.model, 'change:fetching', this.render );
         
       },
       
@@ -22,13 +20,15 @@ define([
         
         var message = {
           text: '',
-          error: false
+          error: false,
+          fetching: this.model.get("fetching")
         };
         
         if ( this.model.get("fetch_error") ){
           message.error = true;
           message.text = 'There was an error getting the results.';
         }
+        
         return { 
           message: message 
         };

@@ -115,9 +115,13 @@ h1{
  * Messages
  */
 #messages{
+  position: relative;
+  p{
+    margin: 0;
+    position: absolute;
+  }
   p.error{
     color: red;
-    margin: 20px 0 0 0;
   }
 }
 

@@ -1,14 +1,11 @@
 define([
-  // The App
   'app',
-  // Dependencies
-  'jquery', 'backbone', 'lodash',
   // Sub-Views
   'views/tournament/ItemView'
   ],
 
   // Module Definition
-  function ( app, $, Backbone, _, TournamentItemView ) {
+  function ( app, TournamentItemView ) {
 
     var TournamentListView = Backbone.View.extend({
       

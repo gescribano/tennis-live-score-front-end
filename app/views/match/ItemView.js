@@ -1,14 +1,11 @@
 define([
-  // The App
   'app',
-  // Dependencies
-  'jquery', 'backbone', 'lodash',
   // Sub-Views
   'views/player/ItemView', 'views/match/HeaderView'
   ],
 
   // Module Definition
-  function ( app, $, Backbone, _, PlayerItemView, MatchHeaderView ) {
+  function ( app, PlayerItemView, MatchHeaderView ) {
 
     var MatchItemView = Backbone.View.extend({
       

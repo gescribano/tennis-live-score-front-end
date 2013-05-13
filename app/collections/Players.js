@@ -1,14 +1,11 @@
 define([
-  // The app
   'app',
-  // Library Dependencies
-  'jquery', 'lodash', 'backbone',
   // The Model
   'models/Player'
   ],
 
   // Module Definition
-  function ( app, $, _, Backbone, Player ){
+  function ( app, Player ){
 
     var Players = Backbone.Collection.extend({
         

@@ -1,14 +1,11 @@
 define([
-  // The App
   'app',
-  // Dependencies
-  'jquery', 'backbone', 'lodash',
   // Assets
   'assetsvendor/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min'
   ],
 
   // Module Definition
-  function ( app, $, Backbone, _, jqueryui ) {
+  function ( app ) {
 
     var DateSelectorView = Backbone.View.extend({
       

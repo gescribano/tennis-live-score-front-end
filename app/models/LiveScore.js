@@ -1,13 +1,11 @@
 define([
   'app',
-  // Library Dependencies
-  'jquery', 'lodash', 'backbone',
   // Assets
   'assetsvendor/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min'
   ],
 
   // Module Definition
-  function (app, $, _, Backbone){
+  function ( app ){
 
     var LiveScore = Backbone.Model.extend({
       
@@ -42,12 +40,16 @@ define([
       
       fetchData: function(){
         
+        this.set("fetching", true);
+        
         this.fetch({
           success: function( model, resp ) {
             model.set("fetch_error", false);
+            model.set("fetching", false);
           },
           error: function( model, resp ) {
             model.set("fetch_error", true);
+            model.set("fetching", false);
           }
         });
         

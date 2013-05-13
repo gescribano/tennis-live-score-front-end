@@ -1,4 +1,6 @@
 <% if ( message.error ){ %>
 <p class="error"><%= message.text %></p>
+<% } else if ( message.fetching ) { %>
+<p class="fetching">Loading...</p>
 <% } else { %>
 <% } %>

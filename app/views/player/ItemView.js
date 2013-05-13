@@ -1,12 +1,9 @@
 define([
-  // The App
-  'app',
-  // Dependencies
-  'jquery', 'backbone', 'lodash'
+  'app'
   ],
 
   // Module Definition
-  function ( app, $, Backbone, _ ) {
+  function ( app ) {
 
     var PlayerItemView = Backbone.View.extend({
       
